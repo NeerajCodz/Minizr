@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redirecting...</title>
+</head>
+<body>
+    <h1>Redirecting...</h1>
+
+    <script src="https://www.gstatic.com/firebasejs/9.5.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.5.0/firebase-firestore.js"></script>
+    <script>
+        // Replace with your Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyC0JgeX4wDWFjwn4nlZSSR5YXas96tQPzI",
+            authDomain: "minizr.firebaseapp.com",
+            databaseURL: "https://minizr-default-rtdb.firebaseio.com",
+            projectId: "minizr",
+            storageBucket: "minizr.appspot.com",
+            messagingSenderId: "913821958493",
+            appId: "1:913821958493:web:004a65cdbc675f5958a8b4",
+            measurementId: "G-39S1CYDCRL"
+        };
+
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.firestore();
+
+        // Get the shortcode from the URL
+        const shortcode = window.location.pathname.replace('/', '');
+
+        // Look up the long URL in Firestore
+        db.collection("urls").doc(shortcode).get().then((doc) => {
+            if (doc.exists) {
+                const data = doc.data();
+                if (data && data.url) {
+                    // Redirect to the long URL
+                    window.location.href = data.url;
+                }
+            } else {
+                // Handle the case when the shortcode doesn't exist
+                alert('Short URL not found');
+                // Redirect to the homepage or an error page
+                window.location.href = '/';
+            }
+        });
+    </script>
+</body>
+</html>

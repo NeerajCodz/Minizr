@@ -1,0 +1,28 @@
+
+.App-header {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 100%;
+    padding: 20px;
+    background-color: #282c34;
+    color: white;
+    text-align: left;
+    left: 0;
+    top: 0;
+}
+
+.App-header h1 {
+    margin: 0;
+    flex-basis: 70%;
+    padding: 10px;
+}
+
+.App-header .ad {
+    flex-basis: 25%;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid white;
+}

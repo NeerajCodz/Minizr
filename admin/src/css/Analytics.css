@@ -1,0 +1,57 @@
+/* Add this to your Form.css file */
+.lol{
+  background-color: #dddddd;
+}
+.basic-analytics {
+    background-color: #ffffff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 20px;
+    margin: 20px;
+    font-family: sans-serif;
+    box-shadow: #000; 
+  }
+
+  .fields{
+    display: contents;
+    margin-bottom: 5px;
+    justify-content: center;
+  }
+  
+  .question-fields{
+    margin: 5px;
+    font-family: Helvetica;
+    font-weight: bolder;
+    color: #000;
+    text-align: right; 
+  }
+  
+  .answer-fields p {
+    font-weight: bold;
+    font-family: 'Trebuchet MS';
+    color: #fff;
+    background-color: #3e8e41; /* Blue background color */
+    padding: 5px 10px;
+    border-radius: 5px;
+    display: inline-block;
+    text-align: left; /* Left-align the answer */
+  }
+  
+  .long-url {
+    font-weight: bold;
+  }
+  
+  .long-url a {
+    color: #04AA6D; /* Blue link color */
+  }
+  
+  .bold {
+    font-weight: bold;
+    color: #000;
+  }
+    
+  .field-click{
+    background-color: #ccc;
+    font-family: arial;
+    font-size: larger;
+  }

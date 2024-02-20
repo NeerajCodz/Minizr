@@ -1,0 +1,50 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+
+#ADMIN
+# dependencies
+/admin/node_modules
+/admin/.pnp
+/admin/.pnp.js
+/admin/public/img
+
+# testing
+/admin/coverage
+
+# production
+/admin/build
+
+# misc
+/admin/.DS_Store
+/admin/.env.local
+/admin/.env.development.local
+/admin/.env.test.local
+/admin/.env.production.local
+
+/admin/npm-debug.log*
+/admin/yarn-debug.log*
+/admin/yarn-error.log*
+
+#CLIENT
+# dependencies
+/clientnode_modules
+/client.pnp
+/client.pnp.js
+/clientpublic/img
+
+# testing
+/clientcoverage
+
+# production
+/clientbuild
+
+# misc
+/client.DS_Store
+/client.env.local
+/client.env.development.local
+/client.env.test.local
+/client.env.production.local
+
+/clientnpm-debug.log*
+/clientyarn-debug.log*
+/clientyarn-error.log*

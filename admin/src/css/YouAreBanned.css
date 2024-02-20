@@ -1,0 +1,33 @@
+.banned-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .banned-content {
+    text-align: center;
+  }
+  
+  .banned-image {
+    width: 100px; /* Adjust the size of the circular photo */
+    height: 100px; /* Adjust the size of the circular photo */
+    border-radius: 50%; /* Create a circular shape */
+    background-color: #f0f0f0; /* Background color of the circular photo */
+    margin: 0 auto 20px; /* Center the circular photo and add space below */
+  }
+  
+  button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #007bff; /* Button background color */
+    color: white; /* Button text color */
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #0056b3; /* Button background color on hover */
+  }
+  

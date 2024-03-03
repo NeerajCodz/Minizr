@@ -1,0 +1,243 @@
+/* Form styles */
+main{
+  overflow-x: hidden;
+}
+
+
+.UrlSection{
+  background-image: url('../images/background.jpg'); /* Path to your background image file */
+  background-size: cover;
+  background-position: center;
+  height: 100vh; 
+  margin-bottom: 10px;
+  overflow-y: hidden;
+}
+
+.FeatureSection{ /* Path to your background image file */
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  margin-top: 30px; 
+  margin-bottom: 10px;
+}
+
+
+form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 600px;
+  margin: 20px auto 40px;
+}
+
+input {
+  margin-bottom: 20px;
+  padding: 15px;
+  font-size: 18px;
+  border: none; /* Remove border */
+  color: white; /* Set text color to white */
+  border-radius: 8px; /* Add border-radius for rounded corners */
+  background-color: rgba(255, 255, 255, 0.2); /* Transparent background */
+  backdrop-filter: blur(10px); /* Apply backdrop-filter for blur effect */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); /* Add box shadow for glassmorphism effect */
+}
+
+input::placeholder {
+  color: rgb(222, 222, 222); /* Set placeholder text color to white */
+}
+
+.password-input {
+  position: relative;
+  width: 100%; /* Ensure the container covers the entire width */
+}
+
+.password-input input {
+  width: calc(100% - 50px); /* Subtract the width of the eye icon from the container width */
+  padding: 10px; /* Adjust padding as needed */
+  padding-right: 40px; /* Add extra padding for the eye icon */
+  font-size: 18px;
+  border: none; /* Remove border */
+  color: white; /* Set text color to white */
+  border-radius: 8px; /* Add border-radius for rounded corners */
+  background-color: rgba(255, 255, 255, 0.2); /* Transparent background */
+  backdrop-filter: blur(10px); /* Apply backdrop-filter for blur effect */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); /* Add box shadow for glassmorphism effect */
+}
+
+.eye-icon {
+  position: absolute;
+  top: 50%;
+  right: 20px; /* Align the eye icon with the right edge of the input field */
+  transform: translateY(-100%);
+  cursor: pointer;
+  color: white;
+}
+
+.title {
+  font-size: 26px;
+  font-weight: bold;
+  color: white;
+  /* Add additional styling as needed */
+}
+
+  
+  button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #007bff; /* Button background color */
+    color: white; /* Button text color */
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #0056b3; /* Button background color on hover */
+  }
+
+.result-message {
+  margin-left: 30px;
+  margin-right: 30px;
+  margin-bottom: 20px;
+  margin-top: 20px;
+  font-weight: bold;
+  font-family: sans-serif;
+  color: #ff0000;
+  font-size: 18px;
+  text-align: center; /* Light gray background color */
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);/* Add box shadow for elevation */
+}
+
+.formbox {
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  width: 80%; /* Default width for larger screens */
+  margin: 0 auto; /* Center the element horizontally */
+
+  /* Media query for smaller screens (e.g., mobile and tablet) */
+  @media screen and (max-width: 768px) {
+    width: 85%; /* Adjust width for smaller screens */
+  }
+}
+
+/* CSS for the Copy button */
+.copy-button {
+  display: inline-block;
+  padding: 10px 20px;
+  margin-right: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color: #04AA6D;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 5px #999;
+}
+
+.copy-button:hover {background-color: #3e8e41}
+
+.copy-button:active {
+  background-color: #3e8e41;
+  box-shadow: 0 1px #666;
+  transform: translateY(4px);
+}
+
+/* CSS for the Share button */
+/* CSS for the Copy button */
+.share-button {
+  display: inline-block;
+  padding: 10px 20px;
+  margin-left: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color: #047AAD  ;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 5px #999;
+}
+
+.share-button:hover {background-color: #3E5F8A}
+
+.share-button:active {
+  background-color: #3E5F8A;
+  box-shadow: 0 1px #666;
+  transform: translateY(4px);
+}
+
+.delete-btn-div{
+  display: flex;
+  margin-bottom: 5px;
+  justify-content: center;
+}
+
+.delete-button {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  justify-content: center;
+  padding: 15px 30px;
+  font-size: 16px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color: #cc2222  ;
+  border: none;
+  border-radius: 5px;
+}
+
+.delete-button:hover {background-color: #3E5F8A}
+
+.delete-button:active {
+  background-color: #3E5F8A;
+  box-shadow: 0 1px #666;
+  transform: translateY(4px);
+}
+
+.delete-checkbox {
+  display: flex;
+  margin-top: 5px;
+  justify-content: center;
+}
+
+.delete-checkbox input[type="checkbox"] {
+  margin-right: 5px;  
+  transform: scale(1.5)
+  
+}
+
+.delete-checkbox span {
+  vertical-align: middle;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  font-family: 'Arial', sans-serif;
+}
+
+.logo {
+  width: 150px;
+  height: auto;
+}
+
+.text {
+  font-size: larger;
+  max-width: 300px; /* Adjust the maximum width as needed */
+  word-wrap: break-word; /* Allow the text to wrap to the next line */
+  line-height: 1.5em; /* Adjust line height for readability */
+  color: gray;
+  text-align: center; /* Center the text horizontally */
+}

@@ -1,31 +1,38 @@
 import React, { useState } from 'react';
-import '../css/Form.css';
+import '../css/Home.css';
 import { addUrlToFirestore } from '../services/firestoreService';
 import { generateShortCode } from '../utils/generateShortCode';
 import { generateAnalyticsID } from '../utils/generateAnalyticsID';
 import { doc, getDoc } from 'firebase/firestore';
 import { db } from '../services/firebase';
-import GetClients from './getClients';
+import FeatureBoxes from './FeaturesBox';
+import BannedHosts from './Hosts'; // Import the BannedHosts component
+import logo from '../images/logo.png';
 
 function UrlShortenerForm() {
-  const clients = GetClients();
-  const [longUrl, setLongUrl] = useState('');
+  const [shortcode, setShortcode] = useState('');
+  const [AnalyticsID, setAnalyticsID] = useState('');
+  const [LongURL, setLongUrl] = useState('');
   const [customShortCode, setCustomShortCode] = useState('');
   const [result, setResult] = useState('');
+  const [redirectToAnalytics, setRedirectToAnalytics] = useState(false);
+
+  const {CreatorIP} = BannedHosts();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Extract domain from longUrl
+    // Extract domain from LongURL
     let domain = '';
-    const protocolIndex = longUrl.indexOf('://');
+    let analyticsID="AID";
+    const protocolIndex = LongURL.indexOf('://');
     if (protocolIndex > -1) {
       const domainStartIndex = protocolIndex + 3; // Length of '://'
-      const domainEndIndex = longUrl.indexOf('/', domainStartIndex);
+      const domainEndIndex = LongURL.indexOf('/', domainStartIndex);
       if (domainEndIndex > -1) {
-        domain = longUrl.substring(domainStartIndex, domainEndIndex);
+        domain = LongURL.substring(domainStartIndex, domainEndIndex);
       } else {
-        domain = longUrl.substring(domainStartIndex);
+        domain = LongURL.substring(domainStartIndex);
       }
     }
     
@@ -52,6 +59,7 @@ function UrlShortenerForm() {
       }
 
       const docSnapshot = await getDoc(doc(db, 'urls', shortcode));
+      setShortcode(shortcode)
       if (docSnapshot.exists()) {
         setResult('Custom short shortcode already exists. Please choose a different one.');
         return;
@@ -61,28 +69,14 @@ function UrlShortenerForm() {
     }
 
     const timestamp = new Date();
-
-    const analyticsID = generateAnalyticsID();
+    analyticsID = generateAnalyticsID();
+    setAnalyticsID(analyticsID);
 
     try {
-      const addedSuccessfully = await addUrlToFirestore(longUrl, shortcode, analyticsID, timestamp);
+      const addedSuccessfully = await addUrlToFirestore(LongURL, shortcode, analyticsID, timestamp, CreatorIP);
 
       if (addedSuccessfully) {
-        const shortLinks = clients.map((client, index) => (
-          <div key={index} className="result-message">
-            <p>
-              <a href={`https://${client}/${shortcode}`} target="_blank" rel="noopener noreferrer">
-                https://{client}/{shortcode}
-              </a>
-            </p>
-            <button className="copy-button" onClick={(e) => handleCopy(client, shortcode, e)}>Copy</button>
-            <button className="share-button" onClick={(e) => handleShare(client, shortcode, e)}>Share</button>
-          </div>
-        ));
-        setResult(shortLinks);
-        // Clear form inputs on success
-        setLongUrl('');
-        setCustomShortCode('');
+        setRedirectToAnalytics(true);
       } else {
         setResult('Failed to create short link. Please retry.');
       }
@@ -92,77 +86,43 @@ function UrlShortenerForm() {
     }
   }; 
 
-  const handleCopy = (client, shortcode, e) => {
-    e.preventDefault(); // Prevent form submission
-    // Create a temporary input element
-    const tempInput = document.createElement('input');
-    
-    // Set the value of the input element to the short link
-    tempInput.value = `https://${client}/${shortcode}`;
-    
-    // Append the input element to the document body
-    document.body.appendChild(tempInput);
-    
-    // Select the value of the input element
-    tempInput.select();
-    
-    // Execute the copy command
-    document.execCommand('copy');
-    
-    // Remove the temporary input element from the document body
-    document.body.removeChild(tempInput);
-    
-    const copyButton = document.getElementById('copyButton');
-    if (copyButton) {
-      // Change button text to indicate link has been copied
-      copyButton.textContent = 'Copied!';
-      // Disable the button to prevent multiple clicks
-      copyButton.disabled = true;
-    }
-  };
-  
-  const handleShare = (client, shortcode, e) => {
-    e.preventDefault(); // Prevent form submission
-    // Define the URL to be shared
-    const urlToShare = `https://${client}/${shortcode}`;
-    
-    // Check if the Web Share API is supported by the browser
-    if (navigator.share) {
-      // Share the URL using the Web Share API
-      navigator.share({
-        title: 'Share Short Link',
-        text: 'Check out this short link!',
-        url: urlToShare,
-      })
-        .then(() => console.log('Shared successfully'))
-        .catch((error) => console.error('Error sharing:', error));
-    } else {
-      // Fallback for browsers that do not support the Web Share API
-      // You can implement your own custom sharing logic here
-      alert(`Share this link: ${urlToShare}`);
-    }
-  };
-
+  if (redirectToAnalytics) {
+    const analyticsURL = `/analytics?shortcode=${encodeURIComponent(shortcode)}&AnalyticsID=${encodeURIComponent(AnalyticsID)}`;
+    // Redirect to the constructed URL
+    window.location.href = analyticsURL;
+  }
+ 
   return (
-    <div className='formbox'>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="url"
-          value={longUrl}
-          onChange={(e) => setLongUrl(e.target.value)}
-          placeholder="Enter long URL"
-          required
-        />
-        <input
-          type="text"
-          value={customShortCode}
-          onChange={(e) => setCustomShortCode(e.target.value)}
-          placeholder="Custom shortcode (optional)"
-        />
-        {result}
-        <button type="submit">Shorten URL</button>
-      </form>
-    </div>
+    <main>
+      <section className='UrlSection'>
+        <div className="container">
+          <img src={logo} alt="Logo" className="logo" />
+          <p className="text">Use our URL shortener to convert your long url to small urls and track them.</p>
+          <div className='formbox'>
+            <form onSubmit={handleSubmit}>
+              <input
+                type="url"
+                value={LongURL}
+                onChange={(e) => setLongUrl(e.target.value)}
+                placeholder="Enter long URL"
+                required
+              />
+              <input
+                type="text"
+                value={customShortCode}
+                onChange={(e) => setCustomShortCode(e.target.value)}
+                placeholder="Custom shortcode (optional)"
+              />
+              {result && <p className="result-message">{result}</p>}
+              <button >Shorten URL</button>
+            </form>
+          </div>
+        </div>
+      </section>
+      <section className='FeatureSection' >
+        <FeatureBoxes/>
+      </section>
+    </main>
   );
 }
 

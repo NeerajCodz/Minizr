@@ -3,35 +3,36 @@ import { getDoc, doc } from 'firebase/firestore';
 import { db } from '../services/firebase';
 
 const BannedHosts = () => {
-  const [userIP, setUserIP] = useState('');
+  const [CreatorIP, setcreatorIP] = useState('');
   const [exists, setExists] = useState(false);
 
   useEffect(() => {
-    const fetchUserIP = async () => {
+    const fetchcreatorIP = async () => {
       try {
         const response = await fetch('https://api.ipify.org?format=json');
         const data = await response.json();
-        setUserIP(data.ip);
+        setcreatorIP(data.ip);
       } catch (error) {
+        setcreatorIP('NaN')
         console.error('Error fetching user IP:', error);
       }
     };
 
-    fetchUserIP();
+    fetchcreatorIP();
   }, []);
 
   useEffect(() => {
     const checkBannedHosts = async () => {
-      if (userIP) {
+      if (CreatorIP) {
         try {
-          const docRef = doc(db, 'banned-hosts', userIP);
+          const docRef = doc(db, 'banned-hosts', CreatorIP);
           const docSnap = await getDoc(docRef);
 
           if (docSnap.exists()) {
-            console.log(`User IP ${userIP} exists in banned-hosts collection.`);
+            console.log(`User IP ${CreatorIP} exists in banned-hosts collection.`);
             setExists(true);
           } else {
-            console.log(`User IP ${userIP} does not exist in banned-hosts collection.`);
+            console.log(`User IP ${CreatorIP} does not exist in banned-hosts collection.`);
             setExists(false);
           }
         } catch (error) {
@@ -46,10 +47,10 @@ const BannedHosts = () => {
     };
 
     checkBannedHosts();
-  }, [userIP]);
+  }, [CreatorIP]);
 
-  // Return an object with both userIP and exists
-  return { userIP, exists };
+  // Return an object with both CreatorIP and exists
+  return { CreatorIP, exists };
 };
 
 export default BannedHosts;

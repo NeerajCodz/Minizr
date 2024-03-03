@@ -1,6 +1,6 @@
-/* Add this to your Form.css file */
-.lol{
-  background-color: #dddddd;
+/* Add this to your Home.css file */
+.main {
+  overflow-x: hidden; /* Hide horizontal overflow */
 }
 .basic-analytics {
     background-color: #ffffff;
@@ -13,9 +13,11 @@
   }
 
   .fields{
-    display: contents;
-    margin-bottom: 5px;
-    justify-content: center;
+    margin: 10px;
+    padding: 20px;
+    border: 1px solid #ddd; /* Add border to create a box */
+    border-radius: 8px; /* Add border radius for rounded corners */
+    background-color: #f9f9f9; /* Background color */
   }
   
   .question-fields{
@@ -54,4 +56,24 @@
     background-color: #ccc;
     font-family: arial;
     font-size: larger;
+  }
+
+  .analytics-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .analytics-table td, .analytics-table th {
+    padding: 8px;
+    border-bottom: 1px solid #ddd;
+    text-align: left;
+  }
+  
+  .analytics-table th {
+    background-color: #f2f2f2;
+  }
+  .analytics-table a {
+    display: block; /* Display the link as a block element */
+    white-space: normal; /* Allow wrapping of long URLs */
+    word-wrap: break-word; /* Break long words to prevent overflow */
   }

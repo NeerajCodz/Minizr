@@ -2,16 +2,17 @@
 import { doc, setDoc } from 'firebase/firestore';
 import { db } from './firebase';
 
-export const addUrlToFirestore = async (longUrl, shortCode, analyticsID, timestamp) => {
+export const addUrlToFirestore = async (LongURL, shortCode, AnalyticsID, timestamp, CreatorIP ) => {
   try {
     const urlRef = doc(db, 'urls', shortCode); // Reference to the document with the shortcode
     await setDoc(urlRef, {
-      longUrl: longUrl,
-      AnalyticsID: analyticsID,
+      LongURL: LongURL,
+      AnalyticsID: (AnalyticsID) ? AnalyticsID : '',
       timestamp: timestamp,
-      click: 0,
+      Clicks: 0,
+      CreatorIP : CreatorIP,
     });
-    console.log('URL added to Firestore:', { longUrl, shortCode, timestamp });
+    console.log('URL added to Firestore:', { LongURL, shortCode, timestamp });
     return true; // Return true if successful
   } catch (error) {
     console.error('Error adding URL to Firestore:', error);

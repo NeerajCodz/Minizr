@@ -1,16 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { doc, getDoc, deleteDoc } from 'firebase/firestore';
-import { db } from '../services/firebase';
-import '../css/Analytics.css'; // Import CSS for analytics
-import '../css/Form.css';
-import GetClients from './getClients';
-import Header from './Header'; // Import the Header component
-import Footer from './Footer'; // Import the Footer component
+import { db } from '../../services/firebase';
+import Header from '../Header';
+import '../../css/Analytics.css'; // Import CSS for analytics
+import '../../css/Home.css';
+import GetClients from '../../utils/getClients';
 
-const AnalyticsDisplay = ({ shortcode, analyticsid }) => {
+const AnalyticsDisplay = ({ shortcode, AnalyticsID }) => {
   const clients = GetClients();
-  const [longUrl, setLongUrl] = useState('');
-  const [click, setClick] = useState('');
+  const [LongURL, setLongURL] = useState('');
+  const [Clicks, setClicks] = useState('');
   const [timestamp, setTimeStamp] = useState('');
   const [isChecked, setIsChecked] = useState(false); // State for checkbox
 
@@ -21,11 +20,11 @@ const AnalyticsDisplay = ({ shortcode, analyticsid }) => {
         const docSnapshot = await getDoc(docRef);
 
         if (docSnapshot.exists()) {
-          const { longUrl, click, timestamp } = docSnapshot.data();
+          const { LongURL, Clicks, timestamp } = docSnapshot.data();
           const dateObject = timestamp.toDate(); // Convert Firebase Timestamp to JavaScript Date object
           setTimeStamp(dateObject.toString());
-          setLongUrl(longUrl);
-          setClick(click);
+          setLongURL(LongURL);
+          setClicks(Clicks);
         } else {
           console.log('Document does not exist');
         }
@@ -37,15 +36,53 @@ const AnalyticsDisplay = ({ shortcode, analyticsid }) => {
     fetchAnalytics();
   }, [shortcode]);
 
-  const basicAnalytics = (
-    <div className="basic-analytics">
-      <div className="fields">
-        <p><span className="question-fields">Created At:</span> <span className="answer-fields">{timestamp}</span></p>
-        <p><span className="question-fields">Long URL:</span> <a href={longUrl} target="_blank" rel="noopener noreferrer" className="long-url">{longUrl}</a></p>
-        <p><span className="question-fields">No of clicks:</span> <span className="answer-fields"><span className="field-click">{click}</span></span></p>
-        <p><span className="question-fields">Shortcode:</span> <span className="answer-fields">{shortcode}</span></p>
-        <p><span className="question-fields">Analytics ID:</span> <span className="answer-fields">{analyticsid}</span></p>
-      </div>
+  const handleCopyTrackLink = () => {
+    const trackLink = `${window.location.origin}/analytics?shortcode=${shortcode}&AnalyticsID=${AnalyticsID}`;
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(trackLink)
+        .then(() => alert('Tracking link copied to clipboard'))
+        .catch(error => console.error('Error copying to clipboard:', error));
+    } else {
+      console.error('Clipboard API not supported');
+    }
+  };
+  
+
+  const AnalyticsTable = (
+    <div className='fields' style={{ marginTop : "50px" }}>
+      <table className='analytics-table' >
+        <tbody>
+          <tr>
+            <td><span className="question-fields">Created At:</span></td>
+            <td>{timestamp}</td>
+          </tr>
+          <tr>
+            <td><span className="question-fields">Long URL:</span></td>
+            <td style={{ maxWidth: '100px', wordBreak: 'break-all' }}>
+
+              <a href={LongURL} target="_blank" rel="noopener noreferrer" style={{ display: 'inline-block', maxWidth: '100%', overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis' }}>
+                {LongURL}
+              </a>
+            </td>
+          </tr>
+          <tr>
+            <td><span className="question-fields">No of Clicks:</span></td>
+            <td><span className="field-click">{Clicks}</span></td>
+          </tr>
+          <tr>
+            <td><span className="question-fields">Shortcode:</span></td>
+            <td>{shortcode}</td>
+          </tr>
+          <tr>
+            <td><span className="question-fields">Analytics ID:</span></td>
+            <td>{AnalyticsID}</td>
+          </tr>
+          <tr>
+          <td></td>
+          <td><button className="copy-track-link-button" onClick={handleCopyTrackLink}>Copy Track Link</button></td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   );
   const shortLinks = clients.map((client, index) => (
@@ -85,7 +122,7 @@ const AnalyticsDisplay = ({ shortcode, analyticsid }) => {
     if (copyButton) {
       // Change button text to indicate link has been copied
       copyButton.textContent = 'Copied!';
-      // Disable the button to prevent multiple clicks
+      // Disable the button to prevent multiple Clicks
       copyButton.disabled = true;
     }
   };
@@ -120,10 +157,12 @@ const AnalyticsDisplay = ({ shortcode, analyticsid }) => {
       console.error('Error deleting document:', error);
     }
   };
+
   return (
-    <div>
-      <Header /> {/* Include the Header component */}
-      {basicAnalytics}
+    <main>
+    <Header/>
+    <div className='main'>
+      {AnalyticsTable}
       {shortLinks}
       <div className='delete-checkbox'>
         <input type="checkbox" checked={isChecked} onChange={(e) => setIsChecked(e.target.checked)} />
@@ -139,8 +178,8 @@ const AnalyticsDisplay = ({ shortcode, analyticsid }) => {
           Delete
         </button>
       </div>
-      <Footer /> {/* Include the Footer component */}
     </div>
+    </main>
   );
 };
 

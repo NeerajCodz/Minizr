@@ -1,0 +1,208 @@
+/* CSS for Popup */
+
+.popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.3); /* Semi-transparent background */
+    backdrop-filter: blur(10px); /* Apply blur effect for glassmorphism */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999; /* Ensure popup is on top of other elements */
+}
+
+.popup-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .popup-table td, .popup-table th {
+    padding: 8px;
+    border-bottom: 1px solid #ddd;
+    text-align: left;
+  }
+  
+  .popup-table th {
+    background-color: #f2f2f2;
+  }
+  .popup-table a {
+    display: block; /* Display the link as a block element */
+    white-space: normal; /* Allow wrapping of long URLs */
+    word-wrap: break-word; /* Break long words to prevent overflow */
+  }
+
+  .more-btn {
+    background-color: #3c76eb; /* Set background color */
+    color: #fff; /* Set text color */
+    border: none; /* Remove border */
+    padding: 5px 10px; /* Adjust padding */
+    cursor: pointer; /* Add cursor pointer */
+    border-radius: 5px; /* Add border radius for rounded corners */
+  }
+  
+  .more-btn:hover {
+    background-color: #0957a9; /* Darken background color on hover */
+  }
+
+.popup-content {
+    position: relative;
+    background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white background */
+    padding: 20px;
+    border-radius: 16px; /* Increased border-radius for smoother edges */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Enhanced box shadow for depth */
+    max-width: 400px;
+    width: 90%; /* Adjusted width for better responsiveness */
+    color: #333; /* Set text color */
+}
+
+.popup-content h2 {
+    margin-top: 0;
+    font-size: 24px; /* Increased font size for headings */
+}
+
+.popup-content label {
+    display: block;
+    margin-bottom: 12px; /* Increased margin for better spacing */
+    font-size: 16px; /* Increased font size for labels */
+}
+
+.popup-content input[type="text"],
+.popup-content input[type="email"] {
+    width: calc(100% - 16px); /* Adjusted width to account for padding */
+    padding: 10px;
+    border: 1px solid #ddd; /* Lightened border color */
+    border-radius: 8px;
+    margin-bottom: 12px; /* Increased margin for better spacing */
+    font-size: 14px; /* Reduced font size for input fields */
+    color: #333; /* Set text color */
+}
+
+.popup-content input[type="text"]::placeholder,
+.popup-content input[type="email"]::placeholder {
+    color: #999; /* Set placeholder color */
+}
+
+.popup-content button[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px 24px; /* Increased padding for button */
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px; /* Increased font size for button text */
+    transition: background-color 0.3s; /* Smooth transition for hover effect */
+}
+
+.popup-content button[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+.popup-content .popup-table {
+    width: 100%;
+}
+
+.popup-content .popup-table td {
+    padding: 8px;
+    border-bottom: 1px solid #ddd;
+}
+
+.popup-content .popup-table td:first-child {
+    font-weight: bold;
+}
+
+.button-container {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.button-container button {
+    margin: 5px;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #007bff;
+    color: #fff;
+}
+
+.button-container button:hover {
+    background-color: #0056b3;
+}
+
+.close {
+    position: absolute;
+    top: 10px; /* Adjusted top position */
+    right: 10px; /* Adjusted right position */
+    width: 36px; /* Increased width */
+    height: 36px; /* Increased height */
+    line-height: 36px;
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white background */
+    border: none;
+    cursor: pointer;
+    font-size: 20px; /* Increased font size */
+    color: #666; /* Darkened color for better visibility */
+    border-radius: 50%;
+    z-index: 99999; /* Ensure the button is on top of other elements */
+}
+
+.close:focus {
+    color: #333; /* Darkened color on hover */
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Assuming you have a CSS file */
+.urls-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #f2f2f2;
+  }
+  
+  .urls-table th,
+  .urls-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+    border-radius: 8px; /* Add round borders */
+  }
+  
+  .urls-table th {
+    background-color: #d9d9d9;
+  }
+  
+  .urls-table td:first-child {
+    background-color: #f2f2f2;
+  }
+  
+  .urls-table button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+  }
+  
+  /* Assuming you have a CSS file */
+  .button-container {
+    text-align: center;
+  }
+  
+  .button-container button {
+    margin: 5px;
+  }
+  
+
+
+
+.prev-btn {
+    order: 1; /* Places the "Previous" button first */
+    margin-right: auto; /* Pushes the button to the left as much as possible */
+  }
+  
+.next-btn {
+    order: 2; /* Places the "Next" button second */
+  }

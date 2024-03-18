@@ -1,8 +1,8 @@
 import React from 'react';
 import { useLocation } from 'react-router-dom';
-import Home from './Home';
+import Home from '../pages/home';
 import AnalyticsForm from './Analytics/AnalyticsForm';
-import AdminLogin from './Admin/AdminLogin';
+import Admin from '../pages/admin';
 import Open from './Open';
 
 function CustomRoute() {
@@ -19,7 +19,7 @@ function CustomRoute() {
       ComponentToRender = <AnalyticsForm />;
       break;
     case '/admin':
-      ComponentToRender = <AdminLogin />;
+      ComponentToRender = <Admin />;
       break;
     default:
       ComponentToRender = <Open shortcode={pathname} />;

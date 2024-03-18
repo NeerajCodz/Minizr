@@ -35,8 +35,8 @@ const UrlPopup = ({ isOpen, onClose, details, onDelete, onBan }) => {
   };
 
   // Function to handle ban user button click
-  const handleBanUser = () => {
-    setConfirmationAction('banUser');
+  const handleBanIP = () => {
+    setConfirmationAction('banIP');
     setIsConfirmationOpen(true);
   };
 
@@ -54,13 +54,13 @@ const UrlPopup = ({ isOpen, onClose, details, onDelete, onBan }) => {
       } catch (error) {
         console.error('Error banning IP:', error);
       }
-    } else if (confirmationAction === 'banUser') {
+    } else if (confirmationAction === 'banIP') {
       try {
         // Ban the user by setting banned flag in banned-hosts collection
         const bannedHostsRef = collection(db, 'banned-hosts');
         const docRef = doc(bannedHostsRef, details.CreatorIP);
         await setDoc(docRef, { banned: true });
-        console.log('User banned successfully:', details.CreatorIP);
+        console.log('IP banned successfully:', details.CreatorIP);
       } catch (error) {
         console.error('Error banning user:', error);
       }
@@ -116,7 +116,7 @@ const UrlPopup = ({ isOpen, onClose, details, onDelete, onBan }) => {
           {/* Button to handle ban action */}
           <button onClick={handleBan} >Ban Link</button>
           {/* Button to handle ban user action */}
-          <button onClick={handleBanUser} >Ban User</button>
+          <button onClick={handleBanIP} >Ban IP</button>
         </div>
         {/* Confirmation popup */}
         {isConfirmationOpen && (

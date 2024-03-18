@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { doc, getDoc, collection, query, orderBy, limit, getDocs, deleteDoc, updateDoc } from 'firebase/firestore';
 import { db } from '../../services/firebase';
-import '../../css/Admin.css';
+import '../../styles/Admin.css';
 import Popup from './UrlPopup';
 import trimUrl from '../../utils/trimUrl'; // Import trimUrl function
 
@@ -14,7 +14,7 @@ const UrlsTable = ({ urlsTable, openPopup }) => {
           <th>Date</th>
           <th>Shortcode</th>
           <th>Long URL</th>
-          <th>More Info</th>
+          <th>More</th>
         </tr>
       </thead>
       <tbody>
@@ -23,7 +23,7 @@ const UrlsTable = ({ urlsTable, openPopup }) => {
             <td>{new Date(url.timestamp.toDate()).toLocaleDateString()}</td>
             <td>{url.id}</td>
             <td><a href={url.LongURL} target="_blank" rel="noopener noreferrer">{trimUrl(url.LongURL)}</a></td>
-            <td><button className='more-btn' onClick={() => openPopup(url)}>More Info</button></td>
+            <td><button className='more-btn' onClick={() => openPopup(url)}>More</button></td>
           </tr>
         ))}
       </tbody>
@@ -133,11 +133,12 @@ function AdminPortal({ Username, Password }) {
 
   // Display appropriate message based on isAdmin state
   return (
-    <section style={{ textAlign: 'center' }}>
       <main>
         {isAdmin ? (
-          <section className='Url-dashboard'>
-            <div style={{ marginTop : "50px", display:'inline-block', textAlign: 'left' }}>
+          <section className='Url-dashboard' >
+            
+            <div className='Url-table'>
+              <h1>URL DASHBOARD</h1>
               <UrlsTable urlsTable={urlsTable} openPopup={openPopup} />
               <div className='button-container'>
                 <button className='prev-btn' onClick={handleCollapsePage} disabled={currentPage === 1}>Collapse</button>
@@ -150,7 +151,6 @@ function AdminPortal({ Username, Password }) {
           <p>Access denied.</p>
         )}
       </main>
-    </section>
   );
 }
 

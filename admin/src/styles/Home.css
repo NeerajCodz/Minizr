@@ -3,6 +3,11 @@ main{
   overflow-x: hidden;
 }
 
+body {
+  display: block;
+  margin: 0px;
+  overflow-x: 'hidden'
+}
 
 .UrlSection{
   background-image: url('../images/background.jpg'); /* Path to your background image file */

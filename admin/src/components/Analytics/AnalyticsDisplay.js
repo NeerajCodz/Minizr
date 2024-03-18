@@ -2,9 +2,10 @@ import React, { useEffect, useState } from 'react';
 import { doc, getDoc, deleteDoc } from 'firebase/firestore';
 import { db } from '../../services/firebase';
 import Header from '../Header';
-import '../../css/Analytics.css'; // Import CSS for analytics
-import '../../css/Home.css';
+import '../../styles/Analytics.css'; // Import CSS for analytics
+import '../../styles/Home.css';
 import GetClients from '../../utils/getClients';
+import trimUrl from '../../utils/trimUrl';
 
 const AnalyticsDisplay = ({ shortcode, AnalyticsID }) => {
   const clients = GetClients();
@@ -61,7 +62,7 @@ const AnalyticsDisplay = ({ shortcode, AnalyticsID }) => {
             <td style={{ maxWidth: '100px', wordBreak: 'break-all' }}>
 
               <a href={LongURL} target="_blank" rel="noopener noreferrer" style={{ display: 'inline-block', maxWidth: '100%', overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis' }}>
-                {LongURL}
+                {trimUrl(LongURL)}
               </a>
             </td>
           </tr>

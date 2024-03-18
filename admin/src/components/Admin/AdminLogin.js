@@ -1,10 +1,8 @@
 import React, { useState } from 'react';
 import { doc, getDoc } from 'firebase/firestore';
 import { db } from '../../services/firebase';
-import Header from '../Header';
-import Footer from '../Footer';
 import AdminPortal from './AdminPortal.js'; // Assuming you have an AdminPortal component
-import '../../css/Home.css'
+import '../../styles/Home.css'
 import { FaEye, FaEyeSlash } from 'react-icons/fa'; // Import the eye icons
 
 function AdminLogin() {
@@ -48,7 +46,6 @@ function AdminLogin() {
 
   return (
     <main>
-      <Header />
       <section className='UrlSection'>
         <div className="container">
           <h1 className="title">Admin Login</h1>
@@ -82,7 +79,6 @@ function AdminLogin() {
           </div>
         </div>
       </section>
-      <Footer />
     </main>
   );
 }

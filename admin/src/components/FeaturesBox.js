@@ -1,5 +1,5 @@
 import React from 'react';
-import '../css/FeatureBox.css'; // Import CSS file for styling
+import '../styles/FeatureBox.css'; // Import CSS file for styling
 import LikeIcon from '../images/icons/like.png';
 import ResponsiveIcon from '../images/icons/responsive.png';
 import SecureIcon from '../images/icons/secure.png';

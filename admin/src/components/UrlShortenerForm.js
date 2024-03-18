@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
-import '../css/Home.css';
+import '../styles/Home.css';
 import { addUrlToFirestore } from '../services/firestoreService';
 import { generateShortCode } from '../utils/generateShortCode';
 import { generateAnalyticsID } from '../utils/generateAnalyticsID';
 import { doc, getDoc } from 'firebase/firestore';
 import { db } from '../services/firebase';
-import FeatureBoxes from './FeaturesBox';
-import BannedHosts from './Hosts'; // Import the BannedHosts component
+import BannedHosts from '../utils/getHosts'; // Import the BannedHosts component
 import logo from '../images/logo.png';
 
 function UrlShortenerForm() {
@@ -93,36 +92,31 @@ function UrlShortenerForm() {
   }
  
   return (
-    <main>
-      <section className='UrlSection'>
-        <div className="container">
-          <img src={logo} alt="Logo" className="logo" />
-          <p className="text">Use our URL shortener to convert your long url to small urls and track them.</p>
-          <div className='formbox'>
-            <form onSubmit={handleSubmit}>
-              <input
-                type="url"
-                value={LongURL}
-                onChange={(e) => setLongUrl(e.target.value)}
-                placeholder="Enter long URL"
-                required
-              />
-              <input
-                type="text"
-                value={customShortCode}
-                onChange={(e) => setCustomShortCode(e.target.value)}
-                placeholder="Custom shortcode (optional)"
-              />
-              {result && <p className="result-message">{result}</p>}
-              <button >Shorten URL</button>
-            </form>
-          </div>
+  <div>
+      <div className="container">
+        <img src={logo} alt="Logo" className="logo" />
+        <p className="text">Use our URL shortener to convert your long url to small urls and track them.</p>
+        <div className='formbox'>
+          <form onSubmit={handleSubmit}>
+            <input
+              type="url"
+              value={LongURL}
+              onChange={(e) => setLongUrl(e.target.value)}
+              placeholder="Enter long URL"
+              required
+            />
+            <input
+              type="text"
+              value={customShortCode}
+              onChange={(e) => setCustomShortCode(e.target.value)}
+              placeholder="Custom shortcode (optional)"
+            />
+            {result && <p className="result-message">{result}</p>}
+            <button >Shorten URL</button>
+          </form>
         </div>
-      </section>
-      <section className='FeatureSection' >
-        <FeatureBoxes/>
-      </section>
-    </main>
+      </div>
+    </div>
   );
 }
 

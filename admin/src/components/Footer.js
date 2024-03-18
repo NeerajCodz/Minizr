@@ -1,6 +1,6 @@
 //src/components/UrlShortenerForm.js
 import React from 'react';
-import '../css/Footer.css';
+import '../styles/Footer.css';
 
 const Footer = () => {
   return (

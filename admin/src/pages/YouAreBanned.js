@@ -1,8 +1,8 @@
 import React from 'react';
-import BannedHosts from './Hosts';
+import BannedHosts from '../utils/getHosts';
 import unique from "../images/icons/unique.png"
-import '../css/YouAreBanned.css'; // Import CSS file for styles
-import '../css/Home.css'
+import '../styles/YouAreBanned.css'; // Import CSS file for styles
+import '../styles/Home.css'
 
 const YouAreBanned = () => {
     const { CreatorIP } = BannedHosts();

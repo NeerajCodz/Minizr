@@ -1,10 +1,8 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import CustomRoute from './components/CustomRoute'; // Importing  a custom Route component
-import YouAreBanned from './components/YouAreBanned';
-import BannedHosts from './components/Hosts'; // Import the BannedHosts component
-import Footer from './components/Footer';
-import Header from './components/Header';
+import YouAreBanned from './pages/YouAreBanned';
+import BannedHosts from './utils/getHosts'; // Import the BannedHosts component
 
 function App() {
   // Check if the user is banned
@@ -13,9 +11,6 @@ function App() {
 
   return (
     <Router>
-      <section style={{ padding: '25px' }}>
-        <Header />
-      </section>
         <Routes>
           {/* Render the YouAreBanned component if the user is banned */}
           {!exists && (
@@ -23,7 +18,6 @@ function App() {
           )}
           {exists && <Route path="*" element={<YouAreBanned />} />}
         </Routes>
-        <section><Footer /></section>
     </Router>
   );
 }

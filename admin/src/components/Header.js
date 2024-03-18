@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { FaBars } from "react-icons/fa"; // Importing Font Awesome menu icon
 import logo from '../images/logo.png';
-import '../css/Header.css';
+import '../styles/Header.css';
 
 function Header() {
   const [menuOpen, setMenuOpen] = useState(false);

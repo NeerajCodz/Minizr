@@ -1,5 +1,4 @@
 .nav-container {
-    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
@@ -13,7 +12,8 @@ nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 20px;
+    padding: 10px 20px;   
+    font-family: sans-serif;
 }
 
 .header-content {

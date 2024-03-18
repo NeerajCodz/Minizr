@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Route Display</title>
+</head>
+<body>
+    <h1>Current Route:</h1>
+    <p id="route"></p>
+
+    <script>
+        // Get the current route
+        function getCurrentRoute() {
+            let path = window.location.pathname;
+            let route = path.substring(1); // Remove the leading slash
+            return route;
+        }
+
+        // Display the current route
+        function displayRoute() {
+            let route = getCurrentRoute();
+            document.getElementById('route').textContent = route;
+        }
+
+        // Call the displayRoute function when the page loads
+        window.onload = displayRoute;
+    </script>
+</body>
+</html>

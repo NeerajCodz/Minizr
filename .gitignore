@@ -48,3 +48,9 @@
 /clientnpm-debug.log*
 /clientyarn-debug.log*
 /clientyarn-error.log*
+
+#BACKUP
+/backup
+/convert
+/img
+/main

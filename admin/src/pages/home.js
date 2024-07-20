@@ -5,18 +5,18 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 function Home() {
   return (
-    <body>
+    <main>
         <section className='Header' >
             <Header/>
         </section>
-        <section className='UrlSection'>
+        <section className='MainSection'>
             <UrlShortenerForm />
         </section>
         <FeatureBoxes/>
         <section className='Footer' style={{overflowX:'hidden'}}>
             <Footer/>
         </section>
-    </body>
+    </main>
   );
 }
 

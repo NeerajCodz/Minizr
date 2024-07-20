@@ -2,9 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { getDoc, doc } from 'firebase/firestore';
 import { db } from '../../services/firebase';
-import AnalyticsDisplay from './AnalyticsDisplay';
-import Header from '../Header';
-import Footer from '../Footer';
+import AnalyticsDisplay from './Display';
 
 function AnalyticsForm() {
   const [shortcode, setShortcode] = useState('');
@@ -53,8 +51,7 @@ function AnalyticsForm() {
 
   return (
       <main>
-        <Header />
-        <section className='UrlSection'>
+        <section className='MainSection'>
           <div className="container">
             <h1 className="title">Analytics</h1>
             <p className="text">Check/Track your URL's.</p>
@@ -79,7 +76,6 @@ function AnalyticsForm() {
             </div>
           </div>
         </section>
-        <Footer/>
       </main>
   );
 }

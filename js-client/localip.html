@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Local IP Address</title>
+</head>
+<body>
+
+<script>
+    // Function to get the local IP address
+    function getLocalIPAddress() {
+        // Create a temporary RTCPeerConnection object
+        const pc = new RTCPeerConnection();
+
+        // Add a temporary IP address to the connection
+        pc.createDataChannel('');
+
+        // Create a function to handle the connection's ICE candidates
+        pc.onicecandidate = function (event) {
+            if (event.candidate) {
+                // Extract the local IP address from the ICE candidate
+                const localIp = event.candidate.address;
+                
+                // Display the local IP address
+                document.getElementById('localIpDisplay').textContent = "Local IP Address: " + localIp;
+
+                // Close the connection
+                pc.close();
+            }
+        };
+
+        // Create an offer and set local description to trigger ICE gathering
+        pc.createOffer().then(pc.setLocalDescription.bind(pc));
+    }
+
+    // Call the function when the page loads
+    window.onload = getLocalIPAddress;
+</script>
+
+<!-- Display area for local IP address -->
+<p id="localIpDisplay"></p>
+
+</body>
+</html>

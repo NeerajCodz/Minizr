@@ -1,6 +1,12 @@
 /* Form styles */
 main{
   overflow-x: hidden;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 body {
@@ -9,21 +15,60 @@ body {
   overflow-x: 'hidden'
 }
 
-.UrlSection{
+.MainSection{
   background-image: url('../images/background.jpg'); /* Path to your background image file */
   background-size: cover;
   background-position: center;
   height: 100vh; 
-  margin-bottom: 10px;
   overflow-y: hidden;
 }
 
-.FeatureSection{ /* Path to your background image file */
-  background-size: cover;
-  background-position: center;
-  height: 100vh;
-  margin-top: 30px; 
-  margin-bottom: 10px;
+.FeaturesBox {
+  margin: auto; /* Center the box horizontally */
+  margin-top: 180px;
+  margin-bottom: 180px;
+  display: flex;
+  flex-direction: column; /* Set flex direction to column */
+  align-items: center; /* Center items horizontally */
+  text-align: center; /* Center text */
+}
+
+.FeaturesBox h1 {
+  margin-bottom: 30px; /* Add spacing between heading and feature boxes */
+}
+
+.feature-boxes {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 20px;
+  max-width: 800px; /* Limit the maximum width */
+}
+
+.feature-box {
+  text-align: center;
+  border: 1px solid #ccc;
+  padding: 20px;
+  border-radius: 5px;
+  font-family: 'Segoe UI';
+}
+
+.feature-box .icon {
+  font-size: 30px; /* Set the icon size */
+}
+
+@media screen and (max-width: 768px) {
+  .FeaturesBox {
+    margin-top: 100px;
+    margin-bottom: 100px;
+  }
+  .feature-boxes {
+    grid-template-columns: repeat(2, 1fr);
+    margin-left: 5px;
+    margin-right: 5px;
+  }
+  .feature-box .icon {
+    font-size: 25px; /* Set the icon size */
+  }
 }
 
 
@@ -57,7 +102,7 @@ input::placeholder {
 }
 
 .password-input input {
-  width: calc(100% - 50px); /* Subtract the width of the eye icon from the container width */
+  width: 100%; /* Subtract the width of the eye icon from the container width */
   padding: 10px; /* Adjust padding as needed */
   padding-right: 40px; /* Add extra padding for the eye icon */
   font-size: 18px;
@@ -85,20 +130,66 @@ input::placeholder {
   /* Add additional styling as needed */
 }
 
-  
-  button {
-    padding: 10px 20px;
-    font-size: 16px;
-    background-color: #007bff; /* Button background color */
-    color: white; /* Button text color */
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
+.formbox {
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  width: 80%; /* Default width for larger screens */
+  margin: 0 auto; /* Center the element horizontally */
+
+  /* Media query for smaller screens (e.g., mobile and tablet) */
+  @media screen and (max-width: 768px) {
+    width: 85%; /* Adjust width for smaller screens */
   }
-  
-  button:hover {
-    background-color: #0056b3; /* Button background color on hover */
-  }
+}
+
+/* Styling for the button container */
+.button-container {
+  text-align: center;
+  margin-top: 10px;
+  gap: 10px;
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #007bff; /* Button background color */
+  color: white; /* Button text color */
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3; /* Button background color on hover */
+}
+
+.submit-btn {
+  margin: 5px;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: #007bff;
+  color: #fff;
+}
+
+.submit-btn:hover {
+  background-color: #0056b3;
+}
+
+/* Styling for the "More" button */
+.more-btn {
+  background-color: #3c76eb; /* Set background color */
+  color: #fff; /* Set text color */
+  border: none; /* Remove border */
+  padding: 5px 10px; /* Adjust padding */
+  cursor: pointer; /* Add cursor pointer */
+  border-radius: 5px; /* Add border radius for rounded corners */
+}
+.more-btn:hover {
+  background-color: #0957a9; /* Darken background color on hover */
+}
 
 .result-message {
   margin-left: 30px;
@@ -113,17 +204,28 @@ input::placeholder {
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);/* Add box shadow for elevation */
 }
 
-.formbox {
-  align-items: center;
-  justify-content: center;
-  padding: 10px;
-  width: 80%; /* Default width for larger screens */
-  margin: 0 auto; /* Center the element horizontally */
+.cancel-btn {
+  margin: 5px;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: #cc2222;
+  color: #fff;
+}
 
-  /* Media query for smaller screens (e.g., mobile and tablet) */
-  @media screen and (max-width: 768px) {
-    width: 85%; /* Adjust width for smaller screens */
-  }
+.cancel-btn:hover {
+  background-color: #930000;
+}
+
+.advance-btn {
+  background: transparent;
+  padding: 0px;
+  margin-bottom: 10px;
+}
+
+.advance-btn:hover {
+  background: transparent;
 }
 
 /* CSS for the Copy button */
@@ -224,6 +326,80 @@ input::placeholder {
   vertical-align: middle;
 }
 
+/* CSS for slider toggle switch */
+.switch-container {
+  display: flex;
+  align-items: center;
+  width: 100%; /* Align items vertically */
+  justify-content: center; /* Center horizontally */
+  border-radius: 8px;
+  background-color: rgba(255, 255, 255, 0.2);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  padding: 15px;
+  margin-bottom: 10px;
+}
+
+.switch-label {
+  margin-right: 10px; /* Adjust spacing between text and switch */
+  color: #fff;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 30px;
+}
+
+.switch input { 
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+  border-radius: 34px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 20px;
+  width: 20px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+  border-radius: 50%;
+}
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+
 .container {
   display: flex;
   flex-direction: column;
@@ -245,4 +421,14 @@ input::placeholder {
   line-height: 1.5em; /* Adjust line height for readability */
   color: gray;
   text-align: center; /* Center the text horizontally */
+}
+
+@media screen and (max-width: 768px) {
+  .copy-button {
+    font-size: 14px;
+  }
+  .share-button {
+    font-size: 14px;
+  }
+
 }

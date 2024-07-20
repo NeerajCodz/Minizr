@@ -8,7 +8,7 @@ const GetClients = () => {
   useEffect(() => {
     const fetchClients = async () => {
       try {
-        const q = query(collection(db, 'client'), where('Active', '==', true));
+        const q = query(collection(db, 'clients'), where('Active', '==', true));
         const querySnapshot = await getDocs(q);
         const activeClients = [];
 
@@ -30,7 +30,7 @@ const GetClients = () => {
     
     fetchClients();
   }, []);
-
+  console.log(clients)
   return clients; // Return the clients array once it's fetched
 };
 

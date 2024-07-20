@@ -3,21 +3,19 @@ import '../styles/Home.css'
 import '../styles/Header.css'
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-import AnalyticsForm from '../components/Analytics/AnalyticsForm';
-function Home() {
+import Form from '../components/Analytics/Form';
+function Analytics() {
   return (
-    <body>
+    <main>
         <section className='Header'>
             <Header/>
         </section>
-        <section className='Analytics'>
-            <AnalyticsForm/>
-        </section>
+        <Form/>
         <section className='Footer' style={{ overflowX: 'hidden' }}>
             <Footer/>
         </section>
-    </body>
+    </main>
   );
 }
 
-export default Home;
+export default Analytics;

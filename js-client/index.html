@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Combined Information</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/platform/1.3.6/platform.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/UAParser.js/0.7.29/ua-parser.min.js"></script>
+</head>
+<body>
+
+<h1>Combined Information</h1>
+
+<!-- Display area for GPU information -->
+<div id="gpuInfoDisplay"></div>
+
+<!-- Display area for user agent information -->
+<div id="userAgentDisplay"></div>
+
+<!-- Display area for device and browser information -->
+<div id="deviceInfoDisplay"></div>
+
+<!-- Display area for IP information -->
+<div id="ipInfoDisplay"></div>
+
+<!-- Display area for local IP address -->
+<p id="localIpDisplay"></p>
+
+<!-- Display area for platform information -->
+<p id="platformDisplay"></p>
+
+<!-- Display area for referring URL -->
+<p id="referringUrlDisplay"></p>
+
+<script>
+    // Function to get GPU information
+    function getGPUInformation() {
+        // Create a canvas element
+        var canvas = document.createElement('canvas');
+        
+        // Get WebGL rendering context
+        var gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
+        
+        // Check if WebGL is supported
+        if (gl) {
+            // Get the debug info extension
+            var debugInfo = gl.getExtension('WEBGL_debug_renderer_info');
+            
+            if (debugInfo) {
+                // Get GPU information
+                var renderer = gl.getParameter(debugInfo.UNMASKED_RENDERER_WEBGL);
+                var vendor = gl.getParameter(debugInfo.UNMASKED_VENDOR_WEBGL);
+                
+                // Display the GPU information
+                var gpuInfoDisplay = document.getElementById('gpuInfoDisplay');
+                gpuInfoDisplay.innerHTML = `
+                    <p><strong>Renderer:</strong> ${renderer}</p>
+                    <p><strong>Vendor:</strong> ${vendor}</p>
+                `;
+            } else {
+                // Extension not supported
+                var gpuInfoDisplay = document.getElementById('gpuInfoDisplay');
+                gpuInfoDisplay.textContent = 'WEBGL_debug_renderer_info extension is not supported on this device.';
+            }
+        } else {
+            // WebGL is not supported
+            var gpuInfoDisplay = document.getElementById('gpuInfoDisplay');
+            gpuInfoDisplay.textContent = 'WebGL is not supported on this device.';
+        }
+    }
+
+    // Function to get and display user agent information
+     function getUserAgentInfo() {
+        // Initialize UAParser.js
+        var parser = new UAParser();
+
+        // Get parsed user agent data
+        var userAgentData = parser.getResult();
+
+        // Display the user agent information
+        var userAgentDisplay = document.getElementById('userAgentDisplay');
+        userAgentDisplay.innerHTML = `
+            <p>User Agent: ${userAgentData.ua || 'Unknown'}</p>
+        `;
+    }
+
+    // Function to get and display device and browser information
+    function getDeviceInfo() {
+        // Get device information using platform.js
+        const deviceType = platform.product || 'Unknown';
+        const osName = platform.os.family || 'Unknown';
+        const osVersion = platform.os.version || '';
+        const browserName = platform.name || 'Unknown';
+        const browserVersion = platform.version || '';
+
+        // Display the device and browser information
+        var deviceInfoDisplay = document.getElementById('deviceInfoDisplay');
+        deviceInfoDisplay.innerHTML = `
+            <p><strong>Device:</strong> ${deviceType}</p>
+            <p><strong>OS:</strong> ${osName} ${osVersion}</p>
+            <p><strong>Browser:</strong> ${browserName} ${browserVersion}</p>
+        `;
+    }
+
+    // Function to fetch IP information from ipwho.is API
+    function fetchIpInformation() {
+        // Define the IP address to query
+        const ipAddress = 'your_ip_address_here'; // Replace 'your_ip_address_here' with the desired IP address
+
+        // Define the URL of the ipwho.is API
+        const apiUrl = `https://ipwho.is/`;
+
+        // Fetch data from the API
+        fetch(apiUrl)
+            .then(response => response.json())
+            .then(data => {
+                // Display the IP information
+                const ipInfoDisplay = document.getElementById('ipInfoDisplay');
+                ipInfoDisplay.innerHTML = `
+                    <p><strong>IP Address:</strong> ${data.ip}</p>
+                    <p><strong>Country:</strong> ${data.country}</p>
+                    <p><strong>Region:</strong> ${data.region}</p>
+                    <p><strong>City:</strong> ${data.city}</p>
+                    <p><strong>ISP:</strong> ${data.connection.isp}</p>
+                    <p><strong>Latitude:</strong> ${data.latitude}</p>
+                    <p><strong>Longitude:</strong> ${data.longitude}</p>
+                    <p><strong>Timezone:</strong> ${data.timezone.id}</p>
+                    <p><strong>Flag:</strong> <img src="${data.flag.img}" alt="Flag" style="width: 20px; height: 20px;"></p>
+                `;
+            })
+            .catch(error => {
+                console.error('Error fetching IP information:', error);
+                const ipInfoDisplay = document.getElementById('ipInfoDisplay');
+                ipInfoDisplay.textContent = 'Error fetching IP information';
+            });
+    }
+
+    // Function to get local IP address
+    function getLocalIPAddress() {
+        // Create a temporary RTCPeerConnection object
+        const pc = new RTCPeerConnection();
+
+        // Add a temporary IP address to the connection
+        pc.createDataChannel('');
+
+        // Create a function to handle the connection's ICE candidates
+        pc.onicecandidate = function (event) {
+            if (event.candidate) {
+                // Extract the local IP address from the ICE candidate
+                const localIp = event.candidate.address;
+                
+                // Display the local IP address
+                const localIpDisplay = document.getElementById('localIpDisplay');
+                localIpDisplay.textContent = `Local IP Address: ${localIp}`;
+
+                // Close the connection
+                pc.close();
+            }
+        };
+
+        // Create an offer and set local description to trigger ICE gathering
+        pc.createOffer().then(pc.setLocalDescription.bind(pc));
+    }
+
+    // Function to get platform information
+    function getPlatform() {
+        // Get the platform
+        var platform = navigator.platform;
+
+        // Display the platform information
+        var platformDisplay = document.getElementById('platformDisplay');
+        platformDisplay.textContent = `Platform: ${platform}`;
+    }
+
+    // Function to get referring URL
+    function getReferringUrl() {
+        // Get the referring URL
+        var referringUrl = document.referrer;
+
+        // Display the referring URL information
+        var referringUrlDisplay = document.getElementById('referringUrlDisplay');
+        if (referringUrl) {
+            referringUrlDisplay.textContent = `Referring URL: ${referringUrl}`;
+        } else {
+            referringUrlDisplay.textContent = 'No referring URL found.';
+        }
+    }
+
+    // Call all functions when the page loads
+    window.onload = function () {
+        getGPUInformation();
+        getUserAgentInfo();
+        getDeviceInfo();
+        fetchIpInformation();
+        getLocalIPAddress();
+        getPlatform();
+        getReferringUrl();
+    };
+</script>
+
+</body>
+</html>

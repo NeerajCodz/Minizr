@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Device and Browser Information</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/UAParser.js/0.7.29/ua-parser.min.js"></script>
+</head>
+<body>
+
+<!-- Display area for device and browser information -->
+<div id="deviceInfoDisplay"></div>
+
+<script>
+    // Function to get and display device and browser information
+    function getDeviceInfo() {
+        // Initialize UAParser.js
+        var parser = new UAParser();
+
+        // Get parsed user agent data
+        var userAgentData = parser.getResult();
+        console.log(userAgentData)
+        // Display the device and browser information
+        var deviceInfoDisplay = document.getElementById('deviceInfoDisplay');
+        deviceInfoDisplay.innerHTML = `
+            <p>User agent: ${userAgentData.ua || 'Unknown'}</p>
+            <p>Device: ${userAgentData.device.model || 'Unknown'}</p>
+            <p>OS: ${userAgentData.os.name} ${userAgentData.os.version|| 'Unknown'}</p>
+            <p>Browser: ${userAgentData.browser.name || 'Unknown'}</p>
+            <p>Version: ${userAgentData.browser.version || 'Unknown'}</p>
+            <p>CPU arch: ${userAgentData.cpu.architecture || 'Unknown'}</p>
+        `;
+    }
+
+    // Call the function when the page loads
+    window.onload = getDeviceInfo;
+</script>
+
+</body>
+</html>

@@ -7,13 +7,13 @@
   
   .banned-content {
     text-align: center;
+    font-family: sans-serif;
   }
   
   .banned-image {
-    width: 100px; /* Adjust the size of the circular photo */
-    height: 100px; /* Adjust the size of the circular photo */
-    border-radius: 50%; /* Create a circular shape */
-    background-color: #f0f0f0; /* Background color of the circular photo */
-    margin: 0 auto 20px; /* Center the circular photo and add space below */
+    font-size: 60px; /* Adjust the size as needed */
+
+    /* Define the color of the icon */
+    color: red; /* Change the color to your preference */
   }
   

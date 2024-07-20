@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Device Detector with platform.js</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/platform/1.3.6/platform.min.js"></script>
+</head>
+<body>
+    <h1>Device Detection with platform.js</h1>
+    <div id="result"></div>
+
+    <script>
+        // Function to execute when the script is loaded
+        function initializeDeviceDetection() {
+            // Get device information using platform.js
+            const deviceType = platform.product || 'Unknown';
+            const osName = platform.os.family || 'Unknown';
+            const osVersion = platform.os.version || '';
+            const browserName = platform.name || 'Unknown';
+            const browserVersion = platform.version || '';
+
+            // Display the detection result
+            const resultDiv = document.getElementById('result');
+            resultDiv.innerHTML = `
+                <p><strong>Device Type:</strong> ${deviceType}</p>
+                <p><strong>Operating System:</strong> ${osName} ${osVersion}</p>
+                <p><strong>Browser:</strong> ${browserName} ${browserVersion}</p>
+            `;
+        }
+
+        // Call the function when the page loads
+        window.onload = initializeDeviceDetection;
+    </script>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IP Information</title>
+</head>
+<body>
+
+<!-- Display area for IP information -->
+<div id="ipInfoDisplay"></div>
+
+<script>
+    // Function to fetch IP information from ipwho.is API
+    function fetchIpInformation() {
+        // Define the IP address to query
+        const ipAddress = 'your_ip_address_here'; // Replace 'your_ip_address_here' with the desired IP address
+
+        // Define the URL of the ipwho.is API
+        const apiUrl = `https://ipwho.is/`;
+
+        // Fetch data from the API
+        fetch(apiUrl)
+            .then(response => response.json())
+            .then(data => {
+                // Display the IP information in HTML
+                document.getElementById('ipInfoDisplay').innerHTML = `
+                    <p>IP Address: ${data.ip}</p>
+                    <p>Country: ${data.country}</p>
+                    <p>Region: ${data.region}</p>
+                    <p>City: ${data.city}</p>
+                    <p>ISP: ${data.connection.isp}</p>
+                    <p>Latitude: ${data.latitude}</p>
+                    <p>Longitude: ${data.longitude}</p>
+                    <p>Timezone: ${data.timezone.id}</p>
+                    <p>Flag: <img src="${data.flag.img}" alt="Flag" style="width: 20px; height: 20px;"></p>
+                `;
+            })
+            .catch(error => {
+                console.error('Error fetching IP information:', error);
+                document.getElementById('ipInfoDisplay').textContent = 'Error fetching IP information';
+            });
+    }
+
+    // Call the function when the page loads
+    window.onload = fetchIpInformation;
+</script>
+
+</body>
+</html>

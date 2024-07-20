@@ -1,5 +1,22 @@
 /* CSS for Popup */
 
+/* n */
+.NothingFound {
+  align-items: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  .icon {
+   font-size: 50px; 
+
+  }
+  p{
+    font-family: sans-serif;
+    font-style: italic;
+    font-size: 25px;
+  }
+}
+
+
 /* Styling for the popup container */
 .popup {
   position: fixed;
@@ -38,19 +55,7 @@
   word-wrap: break-word; /* Break long words to prevent overflow */
 }
 
-/* Styling for the "More" button */
-.more-btn {
-  background-color: #3c76eb; /* Set background color */
-  color: #fff; /* Set text color */
-  border: none; /* Remove border */
-  padding: 5px 10px; /* Adjust padding */
-  cursor: pointer; /* Add cursor pointer */
-  border-radius: 5px; /* Add border radius for rounded corners */
-}
 
-.more-btn:hover {
-  background-color: #0957a9; /* Darken background color on hover */
-}
 
 /* Styling for the popup content */
 .popup-content {
@@ -119,43 +124,19 @@
   font-weight: bold;
 }
 
-/* Styling for the button container */
-.button-container {
-  text-align: center;
-  margin-top: 10px;
-}
-
-.button-container button {
-  margin: 5px;
-  padding: 8px 16px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  background-color: #007bff;
-  color: #fff;
-}
-
-.button-container button:hover {
-  background-color: #0056b3;
-}
-
 /* Styling for the close button */
 .close {
   position: absolute;
   top: 10px; /* Adjusted top position */
   right: 10px; /* Adjusted right position */
-  width: 36px; /* Increased width */
-  height: 36px; /* Increased height */
-  line-height: 36px;
+  padding: 5px 10px;
   text-align: center;
-  background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white background */
   border: none;
   cursor: pointer;
   font-size: 20px; /* Increased font size */
   font-family: Arial, Helvetica, sans-serif;
-  color: #666; /* Darkened color for better visibility */
-  border-radius: 50%;
   z-index: 99999; /* Ensure the button is on top of other elements */
+  border-radius: 100%;
 }
 
 .close:focus {
@@ -165,13 +146,13 @@ cursor: pointer;
 }
 
 /* CSS for Url Dashboard */
-.Url-dashboard {
+.Admin-dashboard {
   text-align: center;
   margin: 15px;
   font-family: Arial, Helvetica, sans-serif;
 }
 
-.Url-table {
+.Admin-table {
   margin: 5px;
   margin-top: 50px;
   padding: 20px;
@@ -180,82 +161,86 @@ cursor: pointer;
   overflow-x: auto; /* Add horizontal scrolling */
 }
 
-/* Styling for the main table */
-.urls-table {
-  width: 100%;
-  border-collapse: collapse;
-  background-color: #f2f2f2;
-  white-space: nowrap; /* Prevent text wrapping */
-}
-
-.urls-table th,
-.urls-table td {
-  border: 1px solid #ddd;
-  padding: 8px;
-  text-align: left;
-  border-radius: 8px; /* Add round borders */
-}
-
-.urls-table th {
-  background-color: #d9d9d9;
-}
-
-.urls-table td:first-child {
-  background-color: #f2f2f2;
-}
-
-.urls-table button {
-  background-color: #007bff;
-  color: #fff;
-  border: none;
-  padding: 5px 10px;
-  cursor: pointer;
-}
-
-/* Styling for the button container */
-.button-container {
-  text-align: center;
-}
-
-.button-container button {
-  margin: 5px;
+.danger-btn {
+  background-color: '#cc2222';
+  margin-bottom: 20px;
 }
 
 /* Styling for the pagination buttons */
 .prev-btn {
   order: 1; /* Places the "Previous" button first */
-  margin-right: auto; /* Pushes the button to the left as much as possible */
+  margin-right: 5px; /* Pushes the button to the left as much as possible */
+  padding: 10px;
 }
 
 .next-btn {
   order: 2; /* Places the "Next" button second */
+  margin-left: 5px;
+  padding: 10px;
 }
 
 /* Styling for the "URL DASHBOARD" heading */
-.Url-dashboard h1 {
+.Admin-dashboard h1 {
   font-weight: bold;
-  font-size: 3vw; /* Adjust the font size relative to the viewport width */
+  font-size: 50px; /* Adjust the font size relative to the viewport width */
   color: rgb(49, 49, 49);
   display: inline-flex;
+  margin-bottom: 50px;
+
 }
+
+.break-string {
+  display: block; /* Change the anchor tag to a block-level element */
+  word-wrap: break-word; /* Allow long URLs to break into multiple lines */
+} 
 
 /* Media query for smaller screens */
 @media screen and (max-width: 768px) {
-  .Url-dashboard {
+  .Admin-dashboard {
     margin: 10px;
   }
 
-  .Url-dashboard h1 {
+  .Admin-dashboard h1 {
       font-size: 5vw; /* Adjust the font size for tablets */
   }
+
+  .NothingFound {
+    .icon {
+     font-size: 30px; 
+    }
+    p{
+      font-size: 20px;
+    }
+  }
+  
 }
 
 @media screen and (max-width: 480px) {
-  .Url-dashboard{
+  .Admin-dashboard{
     margin: 8px;
   }
-  .Url-dashboard h1 {
+  .Admin-dashboard h1 {
       font-size: 8vw; /* Adjust the font size for mobile devices */
   }
+
+  .NothingFound {
+    .icon {
+     font-size: 30px; 
+    }
+    p{
+      font-size: 18px;
+    }
+  }
+
+  .prev-btn {
+    margin-right: 2px; /* Pushes the button to the left as much as possible */
+    padding: 6px;
+  }
+
+  .next-btn {
+    margin-left: 2px;
+    padding: 6px;
+  }
+  
 
 }

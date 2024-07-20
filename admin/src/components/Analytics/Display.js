@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { doc, getDoc, deleteDoc } from 'firebase/firestore';
 import { db } from '../../services/firebase';
-import Header from '../Header';
 import '../../styles/Analytics.css'; // Import CSS for analytics
 import '../../styles/Home.css';
 import GetClients from '../../utils/getClients';
@@ -11,6 +10,7 @@ const AnalyticsDisplay = ({ shortcode, AnalyticsID }) => {
   const clients = GetClients();
   const [LongURL, setLongURL] = useState('');
   const [Clicks, setClicks] = useState('');
+  const [AskBeforeRedirect, setAskBeforeRedirect] = useState('');
   const [timestamp, setTimeStamp] = useState('');
   const [isChecked, setIsChecked] = useState(false); // State for checkbox
 
@@ -21,11 +21,12 @@ const AnalyticsDisplay = ({ shortcode, AnalyticsID }) => {
         const docSnapshot = await getDoc(docRef);
 
         if (docSnapshot.exists()) {
-          const { LongURL, Clicks, timestamp } = docSnapshot.data();
+          const { LongURL, Clicks, timestamp, AskBeforeRedirect } = docSnapshot.data();
           const dateObject = timestamp.toDate(); // Convert Firebase Timestamp to JavaScript Date object
           setTimeStamp(dateObject.toString());
           setLongURL(LongURL);
           setClicks(Clicks);
+          setAskBeforeRedirect(AskBeforeRedirect);
         } else {
           console.log('Document does not exist');
         }
@@ -75,6 +76,10 @@ const AnalyticsDisplay = ({ shortcode, AnalyticsID }) => {
             <td>{shortcode}</td>
           </tr>
           <tr>
+            <td><span className="question-fields">Ask Before Redirect:</span></td>
+            <td>{AskBeforeRedirect ? "True" : "False"}</td>
+          </tr>
+          <tr>
             <td><span className="question-fields">Analytics ID:</span></td>
             <td>{AnalyticsID}</td>
           </tr>
@@ -87,9 +92,8 @@ const AnalyticsDisplay = ({ shortcode, AnalyticsID }) => {
     </div>
   );
   const shortLinks = clients.map((client, index) => (
-    <div key={index} className="result-message">
+    <div key={index} className="client-links">
       <p>
-        
         <a href={`https://${client}/${shortcode}`} target="_blank" rel="noopener noreferrer">
           https://{client}/{shortcode}
         </a>
@@ -161,7 +165,6 @@ const AnalyticsDisplay = ({ shortcode, AnalyticsID }) => {
 
   return (
     <main>
-    <Header/>
     <div className='main'>
       {AnalyticsTable}
       {shortLinks}

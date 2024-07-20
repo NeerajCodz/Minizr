@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Referring URL</title>
+</head>
+<body>
+
+<script>
+    // Function to get and display the referring URL
+    function getReferringUrl() {
+        // Get the referring URL
+        var referringUrl = document.referrer;
+
+        // Get the element where we will display the referring URL
+        var referringUrlDisplay = document.getElementById("referringUrlDisplay");
+
+        // Check if the referring URL is not empty
+        if (referringUrl !== "") {
+            referringUrlDisplay.textContent = "Referring URL: " + referringUrl;
+        } else {
+            referringUrlDisplay.textContent = "No referring URL found.";
+        }
+    }
+
+    // Call the function when the page loads
+    window.onload = getReferringUrl;
+</script>
+
+<!-- Display area for the referring URL -->
+<p id="referringUrlDisplay"></p>
+
+</body>
+</html>

@@ -14,7 +14,7 @@ def display_directory(directory, indent=''):
             print(indent + item)
 
 # Replace 'path_to_your_directory' with the path of the directory you want to display
-directory_path = 'src'
+directory_path = 'D:/codz/Minizr/admin/src'
 
 if os.path.exists(directory_path):
     display_directory(directory_path)

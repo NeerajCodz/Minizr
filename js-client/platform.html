@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Platform Information</title>
+</head>
+<body>
+
+<!-- Display area for platform information -->
+<p id="platformDisplay"></p>
+
+<script>
+    // Function to get and display the platform
+    function getPlatform() {
+        // Get the platform
+        var platform = navigator.platform;
+
+        // Get the element where we will display the platform
+        var platformDisplay = document.getElementById("platformDisplay");
+
+        // Display the platform
+        platformDisplay.textContent = "Platform: " + platform;
+
+        return platform;
+    }
+
+    // Call the function when the page loads
+    window.onload = getPlatform;
+</script>
+
+</body>
+</html>

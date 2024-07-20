@@ -1,9 +1,9 @@
 import React from 'react';
 import { useLocation } from 'react-router-dom';
 import Home from '../pages/home';
-import AnalyticsForm from './Analytics/AnalyticsForm';
 import Admin from '../pages/admin';
-import Open from './Open';
+import Open from '../pages/open';
+import Analytics from '../pages/analytics';
 
 function CustomRoute() {
   const location = useLocation();
@@ -14,9 +14,9 @@ function CustomRoute() {
     case '/':
     case '/home':
       ComponentToRender = <Home />;
-      break;
+      break; 
     case '/analytics':
-      ComponentToRender = <AnalyticsForm />;
+      ComponentToRender = <Analytics/>;
       break;
     case '/admin':
       ComponentToRender = <Admin />;

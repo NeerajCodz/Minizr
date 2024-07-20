@@ -1,79 +1,111 @@
 /* Add this to your Home.css file */
 .main {
-  overflow-x: hidden; /* Hide horizontal overflow */
+overflow-x: hidden; /* Hide horizontal overflow */
 }
 .basic-analytics {
-    background-color: #ffffff;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    padding: 20px;
-    margin: 20px;
-    font-family: sans-serif;
-    box-shadow: #000; 
-  }
+  background-color: #ffffff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 20px;
+  margin: 20px;
+  font-family: sans-serif;
+  box-shadow: #000; 
+}
 
-  .fields{
-    margin: 10px;
-    padding: 20px;
-    border: 1px solid #ddd; /* Add border to create a box */
-    border-radius: 8px; /* Add border radius for rounded corners */
-    background-color: #f9f9f9; /* Background color */
-  }
-  
-  .question-fields{
-    margin: 5px;
-    font-family: Helvetica;
-    font-weight: bolder;
-    color: #000;
-    text-align: right; 
-  }
-  
-  .answer-fields p {
-    font-weight: bold;
-    font-family: 'Trebuchet MS';
-    color: #fff;
-    background-color: #3e8e41; /* Blue background color */
-    padding: 5px 10px;
-    border-radius: 5px;
-    display: inline-block;
-    text-align: left; /* Left-align the answer */
-  }
-  
-  .long-url {
-    font-weight: bold;
-  }
-  
-  .long-url a {
-    color: #04AA6D; /* Blue link color */
-  }
-  
-  .bold {
-    font-weight: bold;
-    color: #000;
-  }
-    
-  .field-click{
-    background-color: #ccc;
-    font-family: arial;
-    font-size: larger;
-  }
+.fields{
+  margin: 10px;
+  padding: 20px;
+  border: 1px solid #ddd; /* Add border to create a box */
+  border-radius: 8px; /* Add border radius for rounded corners */
+  background-color: #f9f9f9; /* Background color */
+}
 
-  .analytics-table {
-    width: 100%;
-    border-collapse: collapse;
-  }
+.question-fields{
+  margin: 5px;
+  font-family: Helvetica;
+  font-weight: bolder;
+  color: #000;
+  text-align: right; 
+}
+
+.answer-fields p {
+  font-weight: bold;
+  font-family: 'Trebuchet MS';
+  color: #fff;
+  background-color: #3e8e41; /* Blue background color */
+  padding: 5px 10px;
+  border-radius: 5px;
+  display: inline-block;
+  text-align: left; /* Left-align the answer */
+}
+
+.long-url {
+  font-weight: bold;
+}
+
+.long-url a {
+  color: #04AA6D; /* Blue link color */
+}
+
+.bold {
+  font-weight: bold;
+  color: #000;
+}
   
-  .analytics-table td, .analytics-table th {
-    padding: 8px;
-    border-bottom: 1px solid #ddd;
-    text-align: left;
+.field-click{
+  background-color: #ccc;
+  font-family: arial;
+  font-size: larger;
+}
+
+.analytics-table {
+  width: auto; /* Set width to auto for responsiveness */
+  max-width: 100%; /* Limit maximum width to prevent overflow */
+  overflow-x: auto; /* Add horizontal scroll at extreme sizes */
+  border-collapse: collapse;
+  table-layout: fixed; /* Fix table layout */
+}
+
+.analytics-table td, .analytics-table th {
+  padding: 8px;
+  border-bottom: 1px solid #ddd;
+  text-align: left;
+  word-wrap: break-word; /* Break long words to prevent overflow */
+}
+
+.analytics-table th {
+  background-color: #f2f2f2;
+}
+.analytics-table a {
+  display: block; /* Display the link as a block element */
+  white-space: normal; /* Allow wrapping of long URLs */
+  word-wrap: break-word; /* Break long words to prevent overflow */
+}
+
+
+.client-links {
+  margin: 20px auto; /* Center the box horizontally */
+  padding: 20px; /* Add padding */
+  font-weight: bold;
+  font-family: sans-serif;
+  color: #ff0000;
+  font-size: 18px;
+  text-align: center;
+  border-radius: 10px; /* Add border radius for rounded corners */
+  background-color: rgba(0, 123, 255, 0.5); /* Set a semi-transparent background color */
+  backdrop-filter: blur(10px); /* Apply blur effect to the background */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08); /* Add box shadow for elevation */
+  width: fit-content; /* Adjust the width based on content */
+}
+
+.client-links p {
+  margin-bottom: 10px; 
+}
+
+@media screen and (max-width: 768px) {
+  .client-links{
+    justify-content: center;
+    font-size: 16px;
+    padding: 10px;
   }
-  
-  .analytics-table th {
-    background-color: #f2f2f2;
-  }
-  .analytics-table a {
-    display: block; /* Display the link as a block element */
-    white-space: normal; /* Allow wrapping of long URLs */
-    word-wrap: break-word; /* Break long words to prevent overflow */
-  }
+}

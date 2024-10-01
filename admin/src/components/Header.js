@@ -1,44 +1,31 @@
 import React, { useState } from "react";
-import { Link, NavLink } from "react-router-dom";
-import { FaBars } from "react-icons/fa"; // Importing Font Awesome menu icon
-import logo from '../images/logo.png';
+import logo from '../images/logo.png'; // Ensure this path is correct
 import '../styles/Header.css';
 
-function Header() {
-  const [menuOpen, setMenuOpen] = useState(false);
+const Header = () => {
+  const [isOpen, setIsOpen] = useState(false);
 
   const toggleMenu = () => {
-    setMenuOpen(!menuOpen);
+    setIsOpen(!isOpen);
   };
 
   return (
-    <div className="nav-container">
-      <nav>
-        <div className="header-content">
-          <Link to="/" className="title">
-            <img src={logo} alt="Website Logo" />
-          </Link>
-          <div className="menu" onClick={toggleMenu}>
-            <FaBars /> {/* React Icons menu icon */}
-          </div>
-        </div>
-        <ul className={menuOpen ? "open" : ""}>
-          <li>
-            <NavLink to="/home" onClick={toggleMenu}>Home</NavLink>
-          </li>
-          <li>
-            <NavLink to="/analytics" onClick={toggleMenu}>Analytics</NavLink>
-          </li>
-          <li>
-            <NavLink to="/services" onClick={toggleMenu}>Services</NavLink>
-          </li>
-          <li>
-            <NavLink to="/contact" onClick={toggleMenu}>LOGIN</NavLink>
-          </li>
-        </ul>
+    <header className="header">
+      <div className="logo">
+        <img src={logo} alt="Logo" className="logo-image" /> {/* Using an image logo */}
+      </div>
+      <div className="menu-icon" onClick={toggleMenu}>
+        <div className={isOpen ? "bar1 change" : "bar1"}></div>
+        <div className={isOpen ? "bar2 change" : "bar2"}></div>
+        <div className={isOpen ? "bar3 change" : "bar3"}></div>
+      </div>
+      <nav className={isOpen ? "nav-links open" : "nav-links"}>
+        <a href="/">Home</a>
+        <a href="/analytics">Analytics</a>
+        <a href="/login">LOGIN</a>
       </nav>
-    </div>
+    </header>
   );
-}
+};
 
 export default Header;

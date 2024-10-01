@@ -1,150 +1,147 @@
-.nav-container {
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 1000;
-    background-color: #15133c;
-    color: white;
-    height: 10%;
-}
+/* Import Google Font in your HTML or CSS */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
-nav {
+/* Header styling */
+.header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 20px;   
-    font-family: sans-serif;
-}
-
-.header-content {
-    display: flex;
-    align-items: center;
-}
-
-nav .title {
-    display: flex;
-    align-items: center;
-    font-size: 2rem;
-    font-weight: bold;
-    text-decoration: none;
+    padding: 15px 40px; /* Increased padding for more space */
+    background-color: #10103b; /* Dark blue background */
     color: white;
+    position: fixed;
+    width: 100vw; /* Full width of the viewport */
+    height: 80px; /* Increased height for more prominence */
+    top: 0;
+    z-index: 100;
+    margin: 0; /* Remove margin to prevent restriction */
 }
 
-nav .title img {
-    max-width: 25%;
-    height: auto;
+/* Logo styling */
+/* Logo styling */
+/* Logo styling */
+.logo {
+    display: flex;
+    align-items: center; /* Center the logo vertically */
 }
 
-nav .menu {
+.logo-image {
+    width: 150px; /* Increased width for a larger logo */
+    height: auto; /* Maintain aspect ratio */
+    margin-right: 15px; /* Adjust margin if needed */
+}
+
+
+/* Navigation links styling */
+.nav-links {
+    display: flex;
+    gap: 30px; /* Increased gap between links */
+    font-family: 'Roboto', sans-serif; /* Changed to Roboto */
+    font-size: 18px; /* Increased font size */
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: #f0e68c;
+}
+
+/* Hamburger menu icon */
+.menu-icon {
     display: none;
     cursor: pointer;
-    margin-left: auto; /* Aligns the menu icon to the right */
 }
 
-nav .menu span {
-    display: block;
-    width: 20px; /* Adjusted width */
-    height: 2px; /* Adjusted height */
-    background-color: #fff;
-    margin: 4px 0; /* Adjusted margin */
-    border-radius: 2px;
+.bar1, .bar2, .bar3 {
+    width: 25px; /* Increased width for the hamburger bars */
+    height: 3.5px; /* Increased height for the hamburger bars */
+    background-color: white;
+    margin: 5px 0; /* Increased margin between bars */
+    transition: 0.4s;
 }
 
-nav ul {
+/* Hamburger menu open state */
+/* Hamburger menu open state */
+.change.bar1 {
+    transform: rotate(45deg) translate(6px, 6px); /* Rotate to form the top part of the X */
+}
+
+.change.bar2 {
+    opacity: 0; /* Hide the middle bar */
+}
+
+.change.bar3 {
+    transform: rotate(-45deg) translate(6px, -6px); /* Rotate to form the bottom part of the X */
+}
+
+
+/* Popup styling for mobile view */
+.nav-links.open {
+    position: fixed;
+    top: 68px; /* Adjusted for increased header height */
+    right: 0;
+    width: 250px; /* Increased width for better touch target */
+    background-color: rgba(16, 16, 59, 0.95); /* Dark background with slight transparency */
+    border-radius: 8px; /* Rounded corners */
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px; /* Increased padding for a spacious look */
     display: flex;
-    list-style: none;
-    margin: 0;
-    padding: 0;
+    z-index: 100;
+    transition: all 0.3s ease; /* Add transition for smoother appearance */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
 }
 
-nav ul li {
-    margin: 0 10px;
+.nav-links.open a {
+    margin: 12px 0; /* Increased margin for mobile links */
+    text-align: left;
+    font-size: 18px; /* Font size for mobile links */
+    transition: background-color 0.3s ease; /* Smooth background transition */
+    padding: 10px; /* Add padding around each link */
+    border-radius: 4px; /* Slightly rounded links */
 }
 
-nav ul li a {
-    text-decoration: none;
-    color: white;
-    padding: 1rem;
-    border-radius: 0.5rem;
-    transition: background-color 0.3s ease;
+.nav-links.open a:hover {
+    background-color: rgba(240, 230, 140, 0.3); /* Light background on hover */
 }
 
-nav ul li a:not(.active):hover {
-    background-color: #1d4ed8;
-}
-
+/* Media queries for responsiveness */
 @media (max-width: 768px) {
-    .nav-container {
-        height: auto;
-        padding: 10px 0;
+    .header {
+        height: 70px; 
     }
-
-    nav {
-        flex-direction: column;
-        align-items: flex-start;
-        padding: 10px 20px;
-    }
-
-    .header-content {
-        width: 100%;
-        justify-content: space-between;
-    }
-
-    nav .title {
-        display: flex;
-        align-items: center;
-        font-size: 1.5rem;
-        font-weight: bold;
-        text-decoration: none;
-        color: white;
-        flex: 1;
-    }
-
-    nav .title img {
-        max-width: 30%;
-        height: auto;
-    }
-
-    nav ul {
+    .nav-links {
         display: none;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        width: 100%;
-        background-color: #15133c;
-        padding: 10px 0;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        z-index: 999;
     }
-
-    nav ul.open {
+    .menu-icon {
+        display: block;
+    }
+    .nav-links.open {
         display: flex;
-        flex-direction: column;
-        align-items: center;
+        padding: 15px;
+        height: auto; 
     }
-
-    nav ul li {
-        margin: 10px 0;
-    }
-
-    nav ul li a {
-        width: 100%;
-        text-align: center;
-    }
-
-    nav .menu {
-        display: flex;
-        align-items: center;
-        margin-left: auto; /* Aligns the menu icon to the right */
+    .logo-image {
+        width: 100px; /* Width for mobile view */
+        margin-right: 10px; /* Adjust margin for mobile */
     }
 }
 
 @media (min-width: 769px) {
-    .menu {
-        display: none; /* Hide menu icon for larger screens */
+    .nav-links {
+        display: flex;
     }
 
-    nav .title {
-        flex: none; /* Reset flex property for title */
-    }
+    .menu-icon {
+        display: none;
+    } 
+
+    .logo-image {
+        width: 150px; /* Width for desktop view */
+        margin-right: 15px; /* Adjust margin for desktop */
+    }  
 }

@@ -1,7 +1,24 @@
 /* Add this to your Home.css file */
-.main {
-overflow-x: hidden; /* Hide horizontal overflow */
+.Analytics-dashboard {
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 5px;
+  margin-top: 50px;
+  padding: 5px;
+  border: 3px solid #ddd;
+  border-radius: 8px;
+  overflow-x: auto; /* Add horizontal scrolling */
 }
+
+.Analytics-dashboard h1 {
+  padding-top: 20px;
+  font-weight: bold;
+  font-size: 2.5em; /* Responsive font size */
+  color: rgb(49, 49, 49);
+  display: inline-flex;
+  margin-bottom: 20px; /* Adjust margin for smaller screens */
+}
+
 .basic-analytics {
   background-color: #ffffff;
   border: 1px solid #ccc;
@@ -12,16 +29,19 @@ overflow-x: hidden; /* Hide horizontal overflow */
   box-shadow: #000; 
 }
 
-.fields{
-  margin: 10px;
-  padding: 20px;
-  border: 1px solid #ddd; /* Add border to create a box */
+h2 {
+  padding: 10px;
+}
+
+.fields {
+  margin-top: 10px;
   border-radius: 8px; /* Add border radius for rounded corners */
   background-color: #f9f9f9; /* Background color */
 }
 
-.question-fields{
-  margin: 5px;
+.question-fields {
+  margin: 10px;
+  font-size: 15px;
   font-family: Helvetica;
   font-weight: bolder;
   color: #000;
@@ -32,7 +52,7 @@ overflow-x: hidden; /* Hide horizontal overflow */
   font-weight: bold;
   font-family: 'Trebuchet MS';
   color: #fff;
-  background-color: #3e8e41; /* Blue background color */
+  background-color: #3e8e41; /* Green background color */
   padding: 5px 10px;
   border-radius: 5px;
   display: inline-block;
@@ -44,22 +64,149 @@ overflow-x: hidden; /* Hide horizontal overflow */
 }
 
 .long-url a {
-  color: #04AA6D; /* Blue link color */
+  color: #04AA6D; /* Link color */
+}
+/* Styling for the table inside the popup */
+.link-table {
+  width: 100%;
+  padding-left: 20px;
+  padding-left: 20px;
+}
+
+.link-table td,
+.link-table th {
+  padding: 8px;
+  border-bottom: 1px solid #ddd;
+  text-align: left;
+}
+
+.link-table th {
+  background-color: #f2f2f2;
+}
+
+.link-table a {
+  display: block; /* Display the link as a block element */
+  white-space: normal; /* Allow wrapping of long URLs */
+  word-wrap: break-word; /* Break long words to prevent overflow */
+}
+
+.link {
+  font-size: 15px; /* Font size */
+  font-family: Arial, Helvetica, sans-serif;
+  color: #0061c8; /* Link color */
+  text-decoration: none; /* Remove underline */
+  transition: color 0.3s ease; /* Smooth transition for color change */
+  margin: 10px 0; /* Spacing around the link */
+  word-wrap: break-word; /* Allow long URLs to wrap */
+  overflow-wrap: break-word; /* Ensure long words wrap */
+  white-space: normal; /* Allow normal whitespace handling */
+  max-width: 100%; /* Ensure it doesn't exceed parent width */
+  display: block; /* Ensure the link takes full width */
+}  
+
+.link:hover {
+  color: #0056b3; /* Darker blue on hover */
+  text-decoration: underline; /* Add underline on hover */
+}
+
+.Danger-Section{
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 5px;
+  margin-top: 50px;
+  padding: 5px;
+  border: 3px solid #ddd;
+  border-radius: 8px;
+  background-color: #ffe6e6; /* Light red background */
+  overflow-x: auto; /* Add horizontal scrolling */
+}
+
+.Danger-Section h1 {
+  padding-top: 20px;
+  font-weight: bold;
+  font-size: 2.5em; /* Responsive font size */
+  color: rgb(49, 49, 49);
+  display: inline-flex;
+  margin-bottom: 20px; /* Adjust margin for smaller screens */
+}
+
+.danger-zone {
+  border-radius: 8px;
+}
+
+.danger-zone h2 {
+  color: #cc0000; /* Darker red for the heading */
+  text-align: center;
+}
+
+.danger-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.danger-table th, .danger-table td {
+  padding: 12px;
+  border-bottom: 1px solid #ddd;
+  text-align: left;
+}
+
+.danger-table th {
+  background-color: #f2f2f2;
+  color: #1f1f1f;
+}
+
+.submit-btn {
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  background-color: #007bff;
+}
+
+.submit-btn:hover {
+  background-color: #0056b3;
+}
+
+.danger-btn {
+  background-color: #cc0000; /* Red button */
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.danger-btn:hover {
+  background-color: #a30000; /* Darker red on hover */
+}
+
+.delete-checkbox {
+  display: flex;
+  margin-top: 5px;
+  justify-content: center;
+}
+
+.delete-checkbox input[type="checkbox"] {
+  margin-right: 5px;  
+  transform: scale(1.5)
+  
+}
+
+.delete-checkbox span {
+  vertical-align: middle;
 }
 
 .bold {
   font-weight: bold;
   color: #000;
 }
-  
-.field-click{
-  background-color: #ccc;
-  font-family: arial;
+
+.field-click {
+  font-family: Arial;
   font-size: larger;
 }
 
 .analytics-table {
-  width: auto; /* Set width to auto for responsiveness */
+  width: 100%; /* Full width for responsiveness */
   max-width: 100%; /* Limit maximum width to prevent overflow */
   overflow-x: auto; /* Add horizontal scroll at extreme sizes */
   border-collapse: collapse;
@@ -76,19 +223,19 @@ overflow-x: hidden; /* Hide horizontal overflow */
 .analytics-table th {
   background-color: #f2f2f2;
 }
+
 .analytics-table a {
   display: block; /* Display the link as a block element */
   white-space: normal; /* Allow wrapping of long URLs */
   word-wrap: break-word; /* Break long words to prevent overflow */
 }
 
-
 .client-links {
   margin: 20px auto; /* Center the box horizontally */
   padding: 20px; /* Add padding */
   font-weight: bold;
   font-family: sans-serif;
-  color: #ff0000;
+  color: #17de81;
   font-size: 18px;
   text-align: center;
   border-radius: 10px; /* Add border radius for rounded corners */
@@ -102,10 +249,104 @@ overflow-x: hidden; /* Hide horizontal overflow */
   margin-bottom: 10px; 
 }
 
+/* Media Queries for Tablets and Phones */
 @media screen and (max-width: 768px) {
-  .client-links{
-    justify-content: center;
-    font-size: 16px;
+  .Analytics-dashboard {
+    padding: 15px;
+    margin-top: 30px;
+  }
+
+  .Analytics-dashboard h1 {
+    font-size: 2em;
+    margin-bottom: 15px;
+  }
+
+  .basic-analytics,
+  .fields,
+  .client-links {
     padding: 10px;
+    margin: 5px;
+  }
+
+  .client-links {
+    font-size: 14px;
+  }
+
+  .question-fields {
+    margin: 5px;
+  }
+
+  .answer-fields {
+    font-size: 15px;
+    margin: 2px;
+    padding: 0px;
+  }
+
+  .link-table,
+  .analytics-table {
+    width: 100%;
+    padding-left: 0;
+  }
+
+  .link-table td,
+  .danger-table td{
+    font-size: 15px;
+  }
+  
+  .link-table th,
+  .analytics-table td,
+  .analytics-table th {
+    padding: 6px;
+  }
+
+  .delete-checkbox input[type="checkbox"] {
+    padding: 8px 10px;
+    margin: 5px;
   }
 }
+
+@media screen and (max-width: 480px) {
+  .Analytics-dashboard h1 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+  }
+
+  .basic-analytics,
+  .fields,
+  .client-links {
+    padding: 8px;
+    margin: 2px;
+  }
+
+  .client-links {
+    font-size: 14px;
+  }
+
+  .question-fields {
+    margin: 0;
+  }
+
+  .answer-fields {
+    font-size: 15px;
+    margin: 2px;
+    padding: 0px;
+  }
+
+  .link-table,
+  .analytics-table {
+    width: 100%;
+    padding-left: 0;
+  }
+
+  .link-table td,
+  .danger-table td{
+    font-size: 15px;
+  }
+  .link-table th,
+  .analytics-table td,
+  .analytics-table th {
+    padding: 5px;
+  }
+
+}
+

@@ -118,6 +118,7 @@ function UrlShortenerForm() {
           Clicks: 0,
           CreatorIP : CreatorIP,
           AskBeforeRedirect: askBeforeRedirecting,
+          Enabled : true,
         });
         console.log('URL added to Firestore:', { LongURL, shortCode, timestamp });
         return true; // Return true if successful

@@ -19,6 +19,7 @@ const YouAreBanned = () => {
             <div className="banned-content">
                 <FaBan className="banned-image" alt="Banned" />
                 <p>We're sorry, but access to this site has been restricted.</p>
+                <p> </p>
                 <p>If you believe this is a mistake, please contact us to appeal.</p>
                 <button onClick={handleContactUsClick}>Contact Us</button>
             </div>

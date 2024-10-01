@@ -1,0 +1,103 @@
+/* AskBeforeRedirect styles */
+.ask-before-redirect-section {
+    background-image: url('../images/background.jpg'); /* Path to your background image file */
+    background-size: cover;
+    background-position: center;
+    height: 100vh; 
+    margin: 0; /* Remove default margin */
+    display: flex; /* Use flexbox */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+  }
+  
+  .ask-before-redirect {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.9); /* Light background */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Box shadow for depth */
+    max-width: 90%; /* Responsive max width */
+    width: 400px; /* Default width */
+    text-align: center; /* Center text */
+  }
+  
+  .ask-before-redirect h2 {
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 24px; /* Font size for the title */
+    color: #333; /* Dark color for the title */
+    margin-bottom: 15px; /* Space below the title */
+  }
+  
+  .ask-before-redirect p {
+    font-size: 18px; /* Font size for the message */
+    color: #666; /* Gray color for the message */
+    margin-bottom: 20px; /* Space below the message */
+  }
+  
+  .button-container {
+    display: flex;
+    gap: 10px; /* Space between buttons */
+  }
+
+  .link {
+    font-size: 18px; /* Font size */
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color: #007bff; /* Link color */
+    text-decoration: none; /* Remove underline */
+    transition: color 0.3s ease; /* Smooth transition for color change */
+    margin: 10px 0; /* Spacing around the link */
+    word-wrap: break-word; /* Allow long URLs to wrap */
+    overflow-wrap: break-word; /* Ensure long words wrap */
+    white-space: normal; /* Allow normal whitespace handling */
+    max-width: 100%; /* Ensure it doesn't exceed parent width */
+    display: block; /* Ensure the link takes full width */
+  }  
+  
+  .link:hover {
+    color: #0056b3; /* Darker blue on hover */
+    text-decoration: underline; /* Add underline on hover */
+  }
+  
+  /* Media Queries for responsiveness */
+  @media (max-width: 768px) {
+    .ask-before-redirect {
+      padding: 15px; /* Reduce padding */
+      width: 90%; /* Use more width on smaller screens */
+    }
+  
+    .ask-before-redirect h2 {
+      font-size: 22px; /* Slightly smaller title */
+    }
+  
+    .ask-before-redirect p {
+      font-size: 16px; /* Smaller message font */
+    }
+  
+    button {
+      font-size: 14px; /* Smaller buttons */
+      padding: 8px 16px; /* Reduce button padding */
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .ask-before-redirect {
+      padding: 10px; /* Further reduce padding */
+    }
+  
+    .ask-before-redirect h2 {
+      font-size: 20px; /* Smaller title for mobile */
+    }
+  
+    .ask-before-redirect p {
+      font-size: 14px; /* Smaller message font for mobile */
+    }
+  
+    button {
+      font-size: 12px; /* Smaller buttons for mobile */
+      padding: 6px 12px; /* Reduce button padding */
+    }
+  }
+  

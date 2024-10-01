@@ -228,57 +228,6 @@ button:hover {
   background: transparent;
 }
 
-/* CSS for the Copy button */
-.copy-button {
-  display: inline-block;
-  padding: 10px 20px;
-  margin-right: 5px;
-  font-size: 16px;
-  cursor: pointer;
-  text-align: center;
-  text-decoration: none;
-  outline: none;
-  color: #fff;
-  background-color: #04AA6D;
-  border: none;
-  border-radius: 15px;
-  box-shadow: 0 5px #999;
-}
-
-.copy-button:hover {background-color: #3e8e41}
-
-.copy-button:active {
-  background-color: #3e8e41;
-  box-shadow: 0 1px #666;
-  transform: translateY(4px);
-}
-
-/* CSS for the Share button */
-/* CSS for the Copy button */
-.share-button {
-  display: inline-block;
-  padding: 10px 20px;
-  margin-left: 5px;
-  font-size: 16px;
-  cursor: pointer;
-  text-align: center;
-  text-decoration: none;
-  outline: none;
-  color: #fff;
-  background-color: #047AAD  ;
-  border: none;
-  border-radius: 15px;
-  box-shadow: 0 5px #999;
-}
-
-.share-button:hover {background-color: #3E5F8A}
-
-.share-button:active {
-  background-color: #3E5F8A;
-  box-shadow: 0 1px #666;
-  transform: translateY(4px);
-}
-
 .delete-btn-div{
   display: flex;
   margin-bottom: 5px;
@@ -302,28 +251,37 @@ button:hover {
   border-radius: 5px;
 }
 
-.delete-button:hover {background-color: #3E5F8A}
+.delete-button:hover {background-color: #a20d0d}
 
 .delete-button:active {
-  background-color: #3E5F8A;
+  background-color: #c20000;
   box-shadow: 0 1px #666;
   transform: translateY(4px);
 }
 
-.delete-checkbox {
+.submit-button {
   display: flex;
-  margin-top: 5px;
+  flex-direction: column;
+  position: relative;
   justify-content: center;
+  padding: 15px 30px;
+  font-size: 16px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color: #294dee  ;
+  border: none;
+  border-radius: 5px;
 }
 
-.delete-checkbox input[type="checkbox"] {
-  margin-right: 5px;  
-  transform: scale(1.5)
-  
-}
+.submit-button:hover {background-color: #3E5F8A}
 
-.delete-checkbox span {
-  vertical-align: middle;
+.submit-button:active {
+  background-color: #0f378d;
+  box-shadow: 0 1px #666;
+  transform: translateY(4px);
 }
 
 /* CSS for slider toggle switch */

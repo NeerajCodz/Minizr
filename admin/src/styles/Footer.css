@@ -20,6 +20,12 @@ footer {
   text-align: center;
 }
 
+.footer-logo {
+  width: 150px; /* Adjust as necessary */
+  height: auto; /* Maintain aspect ratio */
+  margin-bottom: 20px; /* Space between logo and text */
+}
+
 .footer-content h3 {
   font-size: 1.8rem;
   font-weight: 400;
@@ -84,6 +90,6 @@ footer {
   background-clip: text;
 }
 
-.developer :hover{
+.developer:hover {
   color: #0c1939;
 }

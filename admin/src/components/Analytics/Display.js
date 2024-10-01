@@ -203,7 +203,7 @@ const AnalyticsDisplay = ({ shortcode, AnalyticsID }) => {
 
   return (
       <>
-        <section className="Analytics-dashboard">
+        <section className="Link-section">
           <h1>LINKS</h1>
           <table className='link-table'>
             <thead>
@@ -237,41 +237,41 @@ const AnalyticsDisplay = ({ shortcode, AnalyticsID }) => {
           </table>
 
         </section>
-        <section className="Analytics-dashboard">
+        <section className="Analytics-section">
           <h1>Analytics</h1>
           {AnalyticsTable}
         </section>
         <section className="Danger-Section">
           <div className="danger-zone">
-            <h2>Danger Zone</h2>
+            <h1>Danger Zone</h1>
             <table className="danger-table">
                 <thead>
-                    <tr>
-                        <th>Action</th>
-                        <th>Description</th>
-                        <th>Confirm</th>
-                    </tr>
+                  <tr>
+                    <th>Action</th>
+                    <th>Description</th>
+                    <th>Confirm</th>
+                  </tr>
                 </thead>
                 <tbody>
                   <tr>
                     <td><span className="question-fields">Link Status</span></td>
                     <td>
-                        <span className="answer-fields">
-                          {Enabled ? 'Link is enabled' : 'Link is disabled'}
-                        </span>
+                      <span className="answer-fields">
+                        {Enabled ? 'Link is enabled' : 'Link is disabled'}
+                      </span>
                     </td>
                     <td>
                       <button 
-                          className={Enabled ? "danger-btn" : "submit-btn"} 
-                          onClick={() => { 
-                              if (Enabled) {
-                                  openDisableLinkPopup();
-                              } else {
-                                  openDisableLinkPopup();
-                              }
-                          }}
+                        className={Enabled ? "danger-btn" : "submit-btn"} 
+                        onClick={() => { 
+                          if (Enabled) {
+                            openDisableLinkPopup();
+                          } else {
+                            openDisableLinkPopup();
+                          }
+                        }}
                       >
-                          {Enabled ? 'Disable' : 'Enable'}
+                      {Enabled ? 'Disable' : 'Enable'}
                       </button>
                     </td>
                   </tr>

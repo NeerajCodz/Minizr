@@ -1,17 +1,28 @@
 /* Add this to your Home.css file */
-.Analytics-dashboard {
+.Link-section {
   text-align: center;
   font-family: Arial, Helvetica, sans-serif;
   margin: 5px;
-  margin-top: 50px;
+  margin-top: 80px;
   padding: 5px;
   border: 3px solid #ddd;
   border-radius: 8px;
   overflow-x: auto; /* Add horizontal scrolling */
 }
 
-.Analytics-dashboard h1 {
-  padding-top: 20px;
+.Analytics-section {
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 5px;
+  margin-top: 10px;
+  padding: 5px;
+  border: 3px solid #ddd;
+  border-radius: 8px;
+  overflow-x: auto; /* Add horizontal scrolling */
+}
+
+h1 {
+  padding-top: 10px;
   font-weight: bold;
   font-size: 2.5em; /* Responsive font size */
   color: rgb(49, 49, 49);
@@ -251,13 +262,13 @@ h2 {
 
 /* Media Queries for Tablets and Phones */
 @media screen and (max-width: 768px) {
-  .Analytics-dashboard {
-    padding: 15px;
-    margin-top: 30px;
+  .Link-section {
+    padding-top: 0px;
+    padding: 12px;
+    margin-top: 70px;
   }
 
-  .Analytics-dashboard h1 {
-    font-size: 2em;
+  h1 {
     margin-bottom: 15px;
   }
 
@@ -306,8 +317,13 @@ h2 {
 }
 
 @media screen and (max-width: 480px) {
-  .Analytics-dashboard h1 {
-    font-size: 1.5em;
+  .Link-section {
+    padding-top: 0px;
+    padding: 12px;
+    margin-top: 70px;
+  }
+
+  h1 {
     margin-bottom: 10px;
   }
 

@@ -1,17 +1,17 @@
-//src/components/UrlShortenerForm.js
 import React from 'react';
 import '../styles/Footer.css';
+import logo from '../images/logo.png';
 import { FaFacebook, FaTwitter, FaGooglePlus, FaYoutube, FaLinkedin } from 'react-icons/fa';
 
 const Footer = () => {
   const handleRedirect = (url) => {
-    window.location.href = url; // Redirect to the specified URL
+    window.location.href = url; 
   };
 
   return (
     <footer>
       <div className="footer-content">
-        <h3>Minizr</h3>
+        <img src={logo} alt="Minizr Logo" className="footer-logo" /> 
         <p>Thank you for visiting our site.</p>
         <ul className="socials">
           <li><button onClick={() => handleRedirect('your_facebook_url')}><FaFacebook /></button></li>
@@ -22,7 +22,7 @@ const Footer = () => {
         </ul>
       </div>
       <div className="footer-bottom">
-        <p>Copyright &copy; 2024 Minizr. Designed by  <span className="developer" onClick={() => handleRedirect('neeraj_creatz_url')} >Neeraj Creatz</span></p>
+        <p>Copyright &copy; 2024 Minizr. Designed by <span className="developer" onClick={() => handleRedirect('neeraj_creatz_url')}>Neeraj Creatz</span></p>
       </div>
     </footer>
   );

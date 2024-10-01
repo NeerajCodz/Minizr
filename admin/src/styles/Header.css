@@ -11,7 +11,7 @@
     color: white;
     position: fixed;
     width: 100vw; /* Full width of the viewport */
-    height: 80px; /* Increased height for more prominence */
+    height: 70px; /* Increased height for more prominence */
     top: 0;
     z-index: 100;
     margin: 0; /* Remove margin to prevent restriction */
@@ -82,7 +82,7 @@
 /* Popup styling for mobile view */
 .nav-links.open {
     position: fixed;
-    top: 68px; /* Adjusted for increased header height */
+    top: 50px; /* Adjusted for increased header height */
     right: 0;
     width: 250px; /* Increased width for better touch target */
     background-color: rgba(16, 16, 59, 0.95); /* Dark background with slight transparency */
@@ -112,7 +112,7 @@
 /* Media queries for responsiveness */
 @media (max-width: 768px) {
     .header {
-        height: 70px; 
+        height: 60px; 
     }
     .nav-links {
         display: none;
